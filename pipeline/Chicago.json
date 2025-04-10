@@ -353,6 +353,8 @@
 			{
 				"name": "Dim_Date",
 				"type": "ExecuteDataFlow",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Dim_facility",
@@ -372,6 +374,37 @@
 				"typeProperties": {
 					"dataflow": {
 						"referenceName": "Dim_date",
+						"type": "DataFlowReference"
+					},
+					"compute": {
+						"coreCount": 8,
+						"computeType": "General"
+					},
+					"traceLevel": "Coarse"
+				}
+			},
+			{
+				"name": "Dim_Location",
+				"type": "ExecuteDataFlow",
+				"dependsOn": [
+					{
+						"activity": "Dim_Date",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataflow": {
+						"referenceName": "Dim_location",
 						"type": "DataFlowReference"
 					},
 					"compute": {
