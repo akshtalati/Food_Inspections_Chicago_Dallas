@@ -1,0 +1,97 @@
+{
+	"name": "Dim_date",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "Stage_CHICAGO",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "Dim_date",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "derivedColumn1"
+				},
+				{
+					"name": "aggregate2"
+				},
+				{
+					"name": "surrogateKey1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          INSPECTIONID as decimal(38,0),",
+				"          DBA_NAME as string,",
+				"          AKA_NAME as string,",
+				"          LICENSE as double,",
+				"          FACILITY_TYPE as string,",
+				"          RISK as string,",
+				"          ADDRESS as string,",
+				"          CITY as string,",
+				"          STATE as string,",
+				"          ZIP as double,",
+				"          INSPECTION_DATE as date,",
+				"          INSPECTION_TYPE as string,",
+				"          RESULTS as string,",
+				"          VIOLATIONS as string,",
+				"          LATITUDE as double,",
+				"          LONGITUDE as double,",
+				"          LOCATION as string,",
+				"          VIOLATION_CODE as string,",
+				"          VIOLATION_DESCRIPTION as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     format: 'table') ~> source1",
+				"aggregate2 derive(Weekday = toString(toTimestamp(aggregate2@INSPECTION_DATE), 'EEEE')",
+				",",
+				"          Year = year(toTimestamp(aggregate2@INSPECTION_DATE)),",
+				"          Month = month(toTimestamp(aggregate2@INSPECTION_DATE)),",
+				"          Calendar_Date = aggregate2@INSPECTION_DATE) ~> derivedColumn1",
+				"source1 aggregate(groupBy(INSPECTION_DATE),",
+				"     INSPECTION_Date = first(INSPECTION_DATE)) ~> aggregate2",
+				"derivedColumn1 keyGenerate(output(DateKey as long),",
+				"     startAt: 1L,",
+				"     stepValue: 1L) ~> surrogateKey1",
+				"surrogateKey1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          DATE_KEY as decimal(10,0),",
+				"          WEEKDAY as string,",
+				"          YEAR as decimal(4,0),",
+				"          MONTH as decimal(2,0),",
+				"          CALENDAR_DATE as date",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     stageInsert: true,",
+				"     mapColumn(",
+				"          DATE_KEY = DateKey,",
+				"          WEEKDAY = Weekday,",
+				"          YEAR = Year,",
+				"          MONTH = Month,",
+				"          CALENDAR_DATE = Calendar_Date",
+				"     )) ~> sink1"
+			]
+		}
+	}
+}
