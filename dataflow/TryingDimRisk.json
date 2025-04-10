@@ -88,7 +88,11 @@
 				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
-				"     stageInsert: true) ~> sink1"
+				"     stageInsert: true,",
+				"     mapColumn(",
+				"          RISK_KEY = RiskKey,",
+				"          RISK_LEVEL = RISK",
+				"     )) ~> sink1"
 			]
 		}
 	}
