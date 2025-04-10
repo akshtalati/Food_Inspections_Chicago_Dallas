@@ -1,5 +1,5 @@
 {
-	"name": "Dim_Risk",
+	"name": "Dim_business",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
@@ -15,7 +15,7 @@
 			"sinks": [
 				{
 					"dataset": {
-						"referenceName": "Dim_Risk_SF",
+						"referenceName": "Dim_Business",
 						"type": "DatasetReference"
 					},
 					"name": "sink1"
@@ -23,13 +23,13 @@
 			],
 			"transformations": [
 				{
+					"name": "derivedColumn1"
+				},
+				{
 					"name": "select1"
 				},
 				{
 					"name": "aggregate1"
-				},
-				{
-					"name": "select2"
 				},
 				{
 					"name": "surrogateKey1"
@@ -60,26 +60,28 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     format: 'table') ~> source1",
-				"source1 select(mapColumn(",
-				"          RISK",
+				"source1 derive(DBA_NAME = iif(isNull(DBA_NAME), 'Unknown', DBA_NAME),",
+				"          AKA_NAME = iif(isNull(AKA_NAME), 'Unknown', AKA_NAME)) ~> derivedColumn1",
+				"aggregate1 select(mapColumn(",
+				"          DBA_NAME,",
+				"          AKA_NAME,",
+				"          LICENSE",
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> select1",
-				"select1 aggregate(groupBy(RISK),",
-				"     RISK_level = first(RISK)) ~> aggregate1",
-				"aggregate1 select(mapColumn(",
-				"          RISK",
-				"     ),",
-				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> select2",
-				"select2 keyGenerate(output(RiskKey as long),",
+				"derivedColumn1 aggregate(groupBy(LICENSE),",
+				"     DBA_NAME = first(DBA_NAME),",
+				"          AKA_NAME = first(AKA_NAME)) ~> aggregate1",
+				"select1 keyGenerate(output(Business_Key as long),",
 				"     startAt: 1L,",
 				"     stepValue: 1L) ~> surrogateKey1",
 				"surrogateKey1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
-				"          RISK_KEY as decimal(10,0),",
-				"          RISK_LEVEL as string",
+				"          BUSINESS_KEY as decimal(10,0),",
+				"          AKA_NAME as string,",
+				"          DBA_NAME as string,",
+				"          LICENSE as decimal(10,0)",
 				"     ),",
 				"     deletable:false,",
 				"     insertable:true,",
@@ -90,8 +92,10 @@
 				"     skipDuplicateMapOutputs: true,",
 				"     stageInsert: true,",
 				"     mapColumn(",
-				"          RISK_KEY = RiskKey,",
-				"          RISK_LEVEL = RISK",
+				"          BUSINESS_KEY = Business_Key,",
+				"          AKA_NAME,",
+				"          DBA_NAME,",
+				"          LICENSE",
 				"     )) ~> sink1"
 			]
 		}
