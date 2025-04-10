@@ -1,0 +1,9 @@
+{
+	"name": "DataBIFinalSpring25",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "36c7a28a-cda9-4175-b0cb-576e2521349c",
+		"tenantId": "a8eec281-aaa3-4dae-ac9b-9a398b9215e7"
+	}
+}
