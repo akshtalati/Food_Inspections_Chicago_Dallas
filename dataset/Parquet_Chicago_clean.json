@@ -1,0 +1,97 @@
+{
+	"name": "Parquet_Chicago_clean",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "DataLake_AKSH",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "Chicago_Clean_Data.parquet",
+				"fileSystem": "silver"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": [
+			{
+				"name": "InspectionID",
+				"type": "UTF8"
+			},
+			{
+				"name": "DBA_Name",
+				"type": "UTF8"
+			},
+			{
+				"name": "AKA_Name",
+				"type": "UTF8"
+			},
+			{
+				"name": "License",
+				"type": "UTF8"
+			},
+			{
+				"name": "Facility_Type",
+				"type": "UTF8"
+			},
+			{
+				"name": "Risk",
+				"type": "UTF8"
+			},
+			{
+				"name": "Address",
+				"type": "UTF8"
+			},
+			{
+				"name": "City",
+				"type": "UTF8"
+			},
+			{
+				"name": "State",
+				"type": "UTF8"
+			},
+			{
+				"name": "Zip",
+				"type": "UTF8"
+			},
+			{
+				"name": "Inspection_Date",
+				"type": "DATE"
+			},
+			{
+				"name": "Inspection_Type",
+				"type": "UTF8"
+			},
+			{
+				"name": "Results",
+				"type": "UTF8"
+			},
+			{
+				"name": "Violations",
+				"type": "UTF8"
+			},
+			{
+				"name": "Latitude",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "Longitude",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "Location",
+				"type": "UTF8"
+			},
+			{
+				"name": "Violation_Code",
+				"type": "UTF8"
+			},
+			{
+				"name": "Violation_Description",
+				"type": "UTF8"
+			}
+		]
+	}
+}
