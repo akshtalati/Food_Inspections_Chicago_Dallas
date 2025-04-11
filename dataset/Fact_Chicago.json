@@ -1,0 +1,77 @@
+{
+	"name": "Fact_Chicago",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Snowflake_AKSH",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SnowflakeTable",
+		"schema": [
+			{
+				"name": "INSPECTION_EVENT_KEY",
+				"type": "NUMBER",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "INSPECTION_ID",
+				"type": "NUMBER",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "VIOLATION_KEY",
+				"type": "NUMBER",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "FACILITY_KEY",
+				"type": "NUMBER",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "DATE_KEY",
+				"type": "NUMBER",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "RISK_KEY",
+				"type": "NUMBER",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "LOCATION_KEY",
+				"type": "NUMBER",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "BUSINESS_KEY",
+				"type": "NUMBER",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "INSPECTION_TYPE",
+				"type": "VARCHAR",
+				"precision": 100,
+				"scale": 0
+			},
+			{
+				"name": "RESULT",
+				"type": "VARCHAR",
+				"precision": 50,
+				"scale": 0
+			}
+		],
+		"typeProperties": {
+			"schema": "FINALPROJECT_SCHEMA",
+			"table": "FCT_CHICAGO_INSPECTION"
+		}
+	}
+}
