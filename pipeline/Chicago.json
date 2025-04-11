@@ -419,6 +419,8 @@
 			{
 				"name": "Dim_Vilolation",
 				"type": "ExecuteDataFlow",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Dim_Location",
@@ -450,8 +452,6 @@
 			{
 				"name": "Fact_Chicago",
 				"type": "ExecuteDataFlow",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Dim_Vilolation",
