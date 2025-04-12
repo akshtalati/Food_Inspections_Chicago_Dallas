@@ -56,6 +56,10 @@
 			],
 			"sinks": [
 				{
+					"dataset": {
+						"referenceName": "Fact",
+						"type": "DatasetReference"
+					},
 					"name": "sink1"
 				}
 			],
@@ -83,6 +87,9 @@
 				},
 				{
 					"name": "surrogateKey1"
+				},
+				{
+					"name": "derivedColumn1"
 				}
 			],
 			"scriptLines": [
@@ -206,10 +213,30 @@
 				"aggregate1 keyGenerate(output(Inspection_Event_Key as long),",
 				"     startAt: 1L,",
 				"     stepValue: 1L) ~> surrogateKey1",
-				"surrogateKey1 sink(allowSchemaDrift: true,",
+				"surrogateKey1 derive(City = Chicago) ~> derivedColumn1",
+				"derivedColumn1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
+				"     input(",
+				"          INSPECTION_EVENT_KEY as decimal(38,0),",
+				"          FACILITY_KEY as decimal(38,0),",
+				"          BUSINESS_KEY as decimal(38,0),",
+				"          LOCATION_KEY as decimal(38,0),",
+				"          VIOLATION_KEY as decimal(38,0),",
+				"          DATE_KEY as decimal(38,0),",
+				"          RISK_KEY as decimal(38,0),",
+				"          INSPECTION_TYPE as string,",
+				"          RESULTS as string,",
+				"          INSPECTION_ID as decimal(38,0),",
+				"          CITY_NAME as string",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
+				"     stageInsert: true,",
 				"     mapColumn(",
 				"          INSPECTION_EVENT_KEY = Inspection_Event_Key,",
 				"          INSPECTION_ID = INSPECTIONID,",
@@ -220,9 +247,9 @@
 				"          LOCATION_KEY,",
 				"          BUSINESS_KEY,",
 				"          INSPECTION_TYPE,",
-				"          RESULT = RESULTS",
-				"     ),",
-				"     format: 'table') ~> sink1"
+				"          RESULTS,",
+				"          CITY_NAME = City",
+				"     )) ~> sink1"
 			]
 		}
 	}
