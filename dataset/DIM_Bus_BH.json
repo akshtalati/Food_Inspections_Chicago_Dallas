@@ -1,0 +1,39 @@
+{
+	"name": "DIM_Bus_BH",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Snowflake_Bhargav",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SnowflakeTable",
+		"schema": [
+			{
+				"name": "BUSINESS_KEY",
+				"type": "NUMBER",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "AKA_NAME",
+				"type": "VARCHAR",
+				"scale": 0
+			},
+			{
+				"name": "DBA_NAME",
+				"type": "VARCHAR",
+				"scale": 0
+			},
+			{
+				"name": "LICENSE",
+				"type": "NUMBER",
+				"precision": 10,
+				"scale": 0
+			}
+		],
+		"typeProperties": {
+			"schema": "FINALPROJECT_SCHEMA",
+			"table": "DIM_BUSINESS"
+		}
+	}
+}
