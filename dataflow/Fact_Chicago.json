@@ -213,7 +213,7 @@
 				"aggregate1 keyGenerate(output(Inspection_Event_Key as long),",
 				"     startAt: 1L,",
 				"     stepValue: 1L) ~> surrogateKey1",
-				"surrogateKey1 derive(City = Chicago) ~> derivedColumn1",
+				"surrogateKey1 derive(City = \"Chicago\") ~> derivedColumn1",
 				"derivedColumn1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
