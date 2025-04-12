@@ -1,0 +1,35 @@
+{
+	"name": "Dim_Risk",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Snowflake_AKSH",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SnowflakeTable",
+		"schema": [
+			{
+				"name": "RISK_KEY",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 0
+			},
+			{
+				"name": "RISK_LEVEL",
+				"type": "VARCHAR",
+				"precision": 100,
+				"scale": 0
+			},
+			{
+				"name": "INSPECTION_SCORE",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 0
+			}
+		],
+		"typeProperties": {
+			"schema": "FINALPROJECT_SCHEMA",
+			"table": "DIM_RISK"
+		}
+	}
+}

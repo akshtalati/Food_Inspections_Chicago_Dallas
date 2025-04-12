@@ -1,0 +1,81 @@
+{
+	"name": "Dallas_STAGE",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "DataLake_AKSH",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "Dallas_Clean.parquet",
+				"fileSystem": "silver"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": [
+			{
+				"name": "RecordID",
+				"type": "INT32"
+			},
+			{
+				"name": "restaurant_name",
+				"type": "UTF8"
+			},
+			{
+				"name": "Inspection Type",
+				"type": "UTF8"
+			},
+			{
+				"name": "Inspection Date",
+				"type": "DATE"
+			},
+			{
+				"name": "Inspection Score",
+				"type": "INT64"
+			},
+			{
+				"name": "Street Address",
+				"type": "UTF8"
+			},
+			{
+				"name": "Zip Code",
+				"type": "UTF8"
+			},
+			{
+				"name": "LatLong",
+				"type": "UTF8"
+			},
+			{
+				"name": "Violation_desc",
+				"type": "UTF8"
+			},
+			{
+				"name": "Description ",
+				"type": "UTF8"
+			},
+			{
+				"name": "Latitude",
+				"type": "UTF8"
+			},
+			{
+				"name": "Longitude",
+				"type": "UTF8"
+			},
+			{
+				"name": "Facality_Type",
+				"type": "UTF8"
+			},
+			{
+				"name": "City",
+				"type": "UTF8"
+			},
+			{
+				"name": "State",
+				"type": "UTF8"
+			}
+		]
+	}
+}
