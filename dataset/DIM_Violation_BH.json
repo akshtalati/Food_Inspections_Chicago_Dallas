@@ -1,0 +1,29 @@
+{
+	"name": "DIM_Violation_BH",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Snowflake_Bhargav",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SnowflakeTable",
+		"schema": [
+			{
+				"name": "VIOLATION_KEY",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 0
+			},
+			{
+				"name": "VIOLATION_DESCRIPTION",
+				"type": "VARCHAR",
+				"precision": 244,
+				"scale": 0
+			}
+		],
+		"typeProperties": {
+			"schema": "FINALPROJECT_SCHEMA",
+			"table": "DIM_VIOLATION"
+		}
+	}
+}

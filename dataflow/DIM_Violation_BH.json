@@ -1,18 +1,101 @@
 {
-	"name": "dataflow1",
+	"name": "DIM_Violation_BH",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
 			"sources": [
 				{
+					"dataset": {
+						"referenceName": "Stg_dallas_Bh",
+						"type": "DatasetReference"
+					},
 					"name": "source1"
 				}
 			],
-			"sinks": [],
-			"transformations": [],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "DIM_Violation_BH",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "select1"
+				},
+				{
+					"name": "aggregate1"
+				},
+				{
+					"name": "select2"
+				},
+				{
+					"name": "surrogateKey1"
+				},
+				{
+					"name": "alterRow1"
+				}
+			],
 			"scriptLines": [
-				"source(allowSchemaDrift: true,",
-				"     validateSchema: false) ~> source1"
+				"source(output(",
+				"          RECORDID as decimal(38,0),",
+				"          RESTAURANT_NAME as string,",
+				"          INSPECTION_TYPE as string,",
+				"          INSPECTION_DATE as date,",
+				"          INSPECTION_SCORE as decimal(38,0),",
+				"          STREET_ADDRESS as string,",
+				"          ZIP_CODE as string,",
+				"          LATLONG as string,",
+				"          VIOLATION_DESC as string,",
+				"          DESCRIPTION as string,",
+				"          LATITUDE as double,",
+				"          LONGITUDE as double,",
+				"          FACILITY_TYPE as string,",
+				"          CITY as string,",
+				"          STATE as string,",
+				"          RESULTS as string,",
+				"          RISK as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     format: 'table') ~> source1",
+				"source1 select(mapColumn(",
+				"          VIOLATION_DESC = DESCRIPTION",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select1",
+				"select1 aggregate(groupBy(VIOLATION_DESC),",
+				"     VIOLATION_DESC_1 = first(VIOLATION_DESC)) ~> aggregate1",
+				"aggregate1 select(mapColumn(",
+				"          VIOLATION_DESC",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select2",
+				"select2 keyGenerate(output(Violation_Key as long),",
+				"     startAt: 44497L,",
+				"     stepValue: 1L) ~> surrogateKey1",
+				"surrogateKey1 alterRow(upsertIf(!isNull(VIOLATION_DESC))) ~> alterRow1",
+				"alterRow1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          VIOLATION_KEY as decimal(38,0),",
+				"          VIOLATION_DESCRIPTION as string",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:true,",
+				"     upsertable:true,",
+				"     keys:['VIOLATION_DESCRIPTION'],",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     stageInsert: true,",
+				"     mapColumn(",
+				"          VIOLATION_KEY = Violation_Key,",
+				"          VIOLATION_DESCRIPTION = VIOLATION_DESC",
+				"     )) ~> sink1"
 			]
 		}
 	}
