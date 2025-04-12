@@ -83,11 +83,15 @@
 				"     insertable:true,",
 				"     updateable:false,",
 				"     upsertable:true,",
-				"     keys:['Facality_key'],",
+				"     keys:['FACILITY_KEY'],",
 				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
-				"     stageInsert: true) ~> sink1"
+				"     stageInsert: true,",
+				"     mapColumn(",
+				"          FACILITY_KEY = Facality_key,",
+				"          FACILITY_TYPE = Facality_Type",
+				"     )) ~> sink1"
 			]
 		}
 	}
