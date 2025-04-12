@@ -26,6 +26,10 @@
 					"name": "Facility"
 				},
 				{
+					"dataset": {
+						"referenceName": "Dim_Risk",
+						"type": "DatasetReference"
+					},
 					"name": "risk"
 				},
 				{
@@ -36,6 +40,10 @@
 					"name": "location"
 				},
 				{
+					"dataset": {
+						"referenceName": "Dim_Violations",
+						"type": "DatasetReference"
+					},
 					"name": "violations"
 				},
 				{
@@ -45,7 +53,7 @@
 			"sinks": [
 				{
 					"dataset": {
-						"referenceName": "Fact_Chicago",
+						"referenceName": "Fact",
 						"type": "DatasetReference"
 					},
 					"name": "sink1"
@@ -119,11 +127,13 @@
 				"     validateSchema: false,",
 				"     format: 'table') ~> Facility",
 				"source(output(",
-				"          RISK_KEY as decimal(10,0),",
-				"          RISK_LEVEL as string",
+				"          RISK_KEY as decimal(38,0),",
+				"          RISK_LEVEL as string,",
+				"          INSPECTION_SCORE as decimal(38,0)",
 				"     ),",
 				"     allowSchemaDrift: true,",
-				"     validateSchema: false) ~> risk",
+				"     validateSchema: false,",
+				"     format: 'table') ~> risk",
 				"source(output(",
 				"          LOCATION_KEY as decimal(10,0),",
 				"          LONGITUDE as double,",
@@ -138,20 +148,13 @@
 				"     validateSchema: false,",
 				"     format: 'table') ~> location",
 				"source(output(",
-				"          VIOLATION_KEY as decimal(10,0),",
-				"          VIOLATION_CODE as string,",
+				"          VIOLATION_KEY as decimal(38,0),",
 				"          VIOLATION_DESCRIPTION as string",
 				"     ),",
 				"     allowSchemaDrift: true,",
-				"     validateSchema: false) ~> violations",
-				"source(output(",
-				"          DATE_KEY as decimal(10,0),",
-				"          WEEKDAY as string,",
-				"          YEAR as decimal(4,0),",
-				"          MONTH as decimal(2,0),",
-				"          CALENDAR_DATE as date",
-				"     ),",
-				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     format: 'table') ~> violations",
+				"source(allowSchemaDrift: true,",
 				"     validateSchema: false) ~> date",
 				"stg, business join(stg@LICENSE == business@LICENSE,",
 				"     joinType:'inner',",
@@ -178,7 +181,7 @@
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
 				"     broadcast: 'auto')~> join5",
-				"join5, date join(INSPECTION_DATE == CALENDAR_DATE,",
+				"join5, date join(stg@INSPECTION_DATE == date@INSPECTION_DATE,",
 				"     joinType:'inner',",
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
@@ -197,18 +200,6 @@
 				"     stepValue: 1L) ~> surrogateKey1",
 				"surrogateKey1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     input(",
-				"          INSPECTION_EVENT_KEY as decimal(10,0),",
-				"          INSPECTION_ID as decimal(10,0),",
-				"          VIOLATION_KEY as decimal(10,0),",
-				"          FACILITY_KEY as decimal(10,0),",
-				"          DATE_KEY as decimal(10,0),",
-				"          RISK_KEY as decimal(10,0),",
-				"          LOCATION_KEY as decimal(10,0),",
-				"          BUSINESS_KEY as decimal(10,0),",
-				"          INSPECTION_TYPE as string,",
-				"          RESULT as string",
-				"     ),",
 				"     deletable:false,",
 				"     insertable:true,",
 				"     updateable:false,",

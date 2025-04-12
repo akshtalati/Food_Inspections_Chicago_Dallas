@@ -15,7 +15,7 @@
 			"sinks": [
 				{
 					"dataset": {
-						"referenceName": "Dim_Date",
+						"referenceName": "Dim_date",
 						"type": "DatasetReference"
 					},
 					"name": "sink1"
@@ -70,7 +70,7 @@
 				"     validateSchema: false,",
 				"     input(",
 				"          DATE_KEY as decimal(38,0),",
-				"          INSPECTION_DATE as timestamp,",
+				"          INSPECTION_DATE as date,",
 				"          YEAR as string,",
 				"          MONTH as string,",
 				"          WEEKDAY as string",
@@ -85,10 +85,10 @@
 				"     stageInsert: true,",
 				"     mapColumn(",
 				"          DATE_KEY = DateKey,",
-				"          WEEKDAY = Weekday,",
+				"          INSPECTION_DATE = derivedColumn1@Inspection_Date,",
 				"          YEAR = Year,",
 				"          MONTH = Month,",
-				"          INSPECTION_DATE = derivedColumn1@Inspection_Date",
+				"          WEEKDAY = Weekday",
 				"     )) ~> sink1"
 			]
 		}

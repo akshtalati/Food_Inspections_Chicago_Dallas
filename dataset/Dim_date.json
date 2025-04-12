@@ -1,0 +1,47 @@
+{
+	"name": "Dim_date",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Snowflake_AKSH",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SnowflakeTable",
+		"schema": [
+			{
+				"name": "DATE_KEY",
+				"type": "NUMBER",
+				"precision": 38,
+				"scale": 0
+			},
+			{
+				"name": "INSPECTION_DATE",
+				"type": "DATE",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "YEAR",
+				"type": "VARCHAR",
+				"precision": 100,
+				"scale": 0
+			},
+			{
+				"name": "MONTH",
+				"type": "VARCHAR",
+				"precision": 100,
+				"scale": 0
+			},
+			{
+				"name": "WEEKDAY",
+				"type": "VARCHAR",
+				"precision": 100,
+				"scale": 0
+			}
+		],
+		"typeProperties": {
+			"schema": "FINALPROJECT_SCHEMA",
+			"table": "DIM_DATE"
+		}
+	}
+}

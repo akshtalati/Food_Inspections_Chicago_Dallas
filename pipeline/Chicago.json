@@ -254,6 +254,8 @@
 			{
 				"name": "dim_risk",
 				"type": "ExecuteDataFlow",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Staging_dataset",
@@ -415,6 +417,8 @@
 			{
 				"name": "Dim_Vilolation",
 				"type": "ExecuteDataFlow",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Dim_Location",
