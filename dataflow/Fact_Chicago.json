@@ -26,10 +26,6 @@
 					"name": "Facility"
 				},
 				{
-					"dataset": {
-						"referenceName": "Dim_Risk_SF",
-						"type": "DatasetReference"
-					},
 					"name": "risk"
 				},
 				{
@@ -47,10 +43,6 @@
 					"name": "violations"
 				},
 				{
-					"dataset": {
-						"referenceName": "Dim_date",
-						"type": "DatasetReference"
-					},
 					"name": "date"
 				}
 			],
@@ -135,8 +127,7 @@
 				"          RISK_LEVEL as string",
 				"     ),",
 				"     allowSchemaDrift: true,",
-				"     validateSchema: false,",
-				"     format: 'table') ~> risk",
+				"     validateSchema: false) ~> risk",
 				"source(output(",
 				"          LOCATION_KEY as decimal(10,0),",
 				"          LONGITUDE as double,",
@@ -166,8 +157,7 @@
 				"          CALENDAR_DATE as date",
 				"     ),",
 				"     allowSchemaDrift: true,",
-				"     validateSchema: false,",
-				"     format: 'table') ~> date",
+				"     validateSchema: false) ~> date",
 				"stg, business join(stg@LICENSE == business@LICENSE,",
 				"     joinType:'inner',",
 				"     matchType:'exact',",

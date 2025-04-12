@@ -15,7 +15,7 @@
 			"sinks": [
 				{
 					"dataset": {
-						"referenceName": "Dim_date",
+						"referenceName": "Dim_Date",
 						"type": "DatasetReference"
 					},
 					"name": "sink1"
@@ -57,11 +57,10 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     format: 'table') ~> source1",
-				"aggregate2 derive(Weekday = toString(toTimestamp(aggregate2@INSPECTION_DATE), 'EEEE')",
-				",",
+				"aggregate2 derive(Weekday = toString(toTimestamp(aggregate2@INSPECTION_DATE), 'EEEE'),",
 				"          Year = year(toTimestamp(aggregate2@INSPECTION_DATE)),",
 				"          Month = month(toTimestamp(aggregate2@INSPECTION_DATE)),",
-				"          Calendar_Date = aggregate2@INSPECTION_DATE) ~> derivedColumn1",
+				"          Inspection_Date = aggregate2@INSPECTION_DATE) ~> derivedColumn1",
 				"source1 aggregate(groupBy(INSPECTION_DATE),",
 				"     INSPECTION_Date = first(INSPECTION_DATE)) ~> aggregate2",
 				"derivedColumn1 keyGenerate(output(DateKey as long),",
@@ -70,11 +69,11 @@
 				"surrogateKey1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
-				"          DATE_KEY as decimal(10,0),",
-				"          WEEKDAY as string,",
-				"          YEAR as decimal(4,0),",
-				"          MONTH as decimal(2,0),",
-				"          CALENDAR_DATE as date",
+				"          DATE_KEY as decimal(38,0),",
+				"          INSPECTION_DATE as timestamp,",
+				"          YEAR as string,",
+				"          MONTH as string,",
+				"          WEEKDAY as string",
 				"     ),",
 				"     deletable:false,",
 				"     insertable:true,",
@@ -89,7 +88,7 @@
 				"          WEEKDAY = Weekday,",
 				"          YEAR = Year,",
 				"          MONTH = Month,",
-				"          CALENDAR_DATE = Calendar_Date",
+				"          INSPECTION_DATE = derivedColumn1@Inspection_Date",
 				"     )) ~> sink1"
 			]
 		}

@@ -15,7 +15,7 @@
 			"sinks": [
 				{
 					"dataset": {
-						"referenceName": "Dim_Risk_SF",
+						"referenceName": "Dim_Risk",
 						"type": "DatasetReference"
 					},
 					"name": "sink1"
@@ -33,6 +33,9 @@
 				},
 				{
 					"name": "surrogateKey1"
+				},
+				{
+					"name": "derivedColumn1"
 				}
 			],
 			"scriptLines": [
@@ -72,14 +75,23 @@
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> select2",
-				"select2 keyGenerate(output(RiskKey as long),",
+				"derivedColumn1 keyGenerate(output(RiskKey as long),",
 				"     startAt: 1L,",
 				"     stepValue: 1L) ~> surrogateKey1",
+				"select2 derive(Inspection_Score = iif(RISK == 'Risk 3 (Low)', 95,",
+				"    iif(RISK == 'Risk 2 (Medium)', 85,",
+				"        iif(RISK == 'Risk 1 (High)', 75,",
+				"            80",
+				"        )",
+				"    )",
+				")",
+				") ~> derivedColumn1",
 				"surrogateKey1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
-				"          RISK_KEY as decimal(10,0),",
-				"          RISK_LEVEL as string",
+				"          RISK_KEY as decimal(38,0),",
+				"          RISK_LEVEL as string,",
+				"          INSPECTION_SCORE as decimal(38,0)",
 				"     ),",
 				"     deletable:false,",
 				"     insertable:true,",
@@ -91,7 +103,8 @@
 				"     stageInsert: true,",
 				"     mapColumn(",
 				"          RISK_KEY = RiskKey,",
-				"          RISK_LEVEL = RISK",
+				"          RISK_LEVEL = RISK,",
+				"          INSPECTION_SCORE = Inspection_Score",
 				"     )) ~> sink1"
 			]
 		}
