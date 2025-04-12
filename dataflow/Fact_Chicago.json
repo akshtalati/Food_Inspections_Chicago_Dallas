@@ -36,10 +36,6 @@
 					"name": "location"
 				},
 				{
-					"dataset": {
-						"referenceName": "Dim_Violation",
-						"type": "DatasetReference"
-					},
 					"name": "violations"
 				},
 				{
@@ -147,8 +143,7 @@
 				"          VIOLATION_DESCRIPTION as string",
 				"     ),",
 				"     allowSchemaDrift: true,",
-				"     validateSchema: false,",
-				"     format: 'table') ~> violations",
+				"     validateSchema: false) ~> violations",
 				"source(output(",
 				"          DATE_KEY as decimal(10,0),",
 				"          WEEKDAY as string,",

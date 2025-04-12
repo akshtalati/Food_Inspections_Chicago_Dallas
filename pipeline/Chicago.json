@@ -415,8 +415,6 @@
 			{
 				"name": "Dim_Vilolation",
 				"type": "ExecuteDataFlow",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Dim_Location",

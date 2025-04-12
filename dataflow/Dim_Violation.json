@@ -15,7 +15,7 @@
 			"sinks": [
 				{
 					"dataset": {
-						"referenceName": "Dim_Violation",
+						"referenceName": "Dim_Violations",
 						"type": "DatasetReference"
 					},
 					"name": "sink1"
@@ -61,28 +61,24 @@
 				"     validateSchema: false,",
 				"     format: 'table') ~> source1",
 				"source1 select(mapColumn(",
-				"          VIOLATION_CODE,",
-				"          VIOLATION_DESCRIPTION",
+				"          VIOLATIONS",
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> select1",
-				"select1 aggregate(groupBy(VIOLATION_CODE,",
-				"          VIOLATION_DESCRIPTION),",
-				"     VIOLATION_DESCRIPTION_1 = first(VIOLATION_DESCRIPTION)) ~> aggregate1",
+				"select1 aggregate(groupBy(VIOLATIONS),",
+				"     Violations = first(VIOLATIONS)) ~> aggregate1",
 				"select2 keyGenerate(output(ViolationKey as long),",
 				"     startAt: 1L,",
 				"     stepValue: 1L) ~> surrogateKey1",
 				"aggregate1 select(mapColumn(",
-				"          VIOLATION_CODE,",
-				"          VIOLATION_DESCRIPTION",
+				"          Violations = aggregate1@VIOLATIONS",
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> select2",
 				"surrogateKey1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
-				"          VIOLATION_KEY as decimal(10,0),",
-				"          VIOLATION_CODE as string,",
+				"          VIOLATION_KEY as decimal(38,0),",
 				"          VIOLATION_DESCRIPTION as string",
 				"     ),",
 				"     deletable:false,",
@@ -95,8 +91,7 @@
 				"     stageInsert: true,",
 				"     mapColumn(",
 				"          VIOLATION_KEY = ViolationKey,",
-				"          VIOLATION_CODE,",
-				"          VIOLATION_DESCRIPTION",
+				"          VIOLATION_DESCRIPTION = Violations",
 				"     )) ~> sink1"
 			]
 		}
