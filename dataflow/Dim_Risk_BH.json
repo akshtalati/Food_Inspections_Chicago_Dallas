@@ -1,5 +1,5 @@
 {
-	"name": "DIM_Location_BH",
+	"name": "Dim_Risk_BH",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
@@ -15,7 +15,7 @@
 			"sinks": [
 				{
 					"dataset": {
-						"referenceName": "Location_BH",
+						"referenceName": "DIM_RISK_BH",
 						"type": "DatasetReference"
 					},
 					"name": "sink1"
@@ -29,11 +29,16 @@
 					"name": "aggregate1"
 				},
 				{
-					"name": "surrogateKey1",
-					"description": "Adding new key Location_Key starting from 12789 with step 1"
+					"name": "select2"
+				},
+				{
+					"name": "derivedColumn1"
 				},
 				{
 					"name": "alterRow1"
+				},
+				{
+					"name": "surrogateKey1"
 				}
 			],
 			"scriptLines": [
@@ -60,57 +65,48 @@
 				"     validateSchema: false,",
 				"     format: 'table') ~> source1",
 				"source1 select(mapColumn(",
-				"          STREET_ADDRESS,",
-				"          ZIP_CODE,",
-				"          LATLONG,",
-				"          LATITUDE,",
-				"          LONGITUDE,",
-				"          CITY,",
-				"          STATE",
+				"          RISK",
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> select1",
-				"select1 aggregate(groupBy(ZIP_CODE,",
-				"          LATLONG,",
-				"          LATITUDE,",
-				"          LONGITUDE,",
-				"          CITY,",
-				"          STATE),",
-				"     STREET_ADDRESS = first(STREET_ADDRESS)) ~> aggregate1",
-				"aggregate1 keyGenerate(output(Location_Key as long),",
-				"     startAt: 12789L,",
+				"select1 aggregate(groupBy(RISK),",
+				"     RISK_level = first(RISK)) ~> aggregate1",
+				"aggregate1 select(mapColumn(",
+				"          RISK",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select2",
+				"select2 derive(Inspection_Score = iif(RISK == 'Risk 3 (Low)', 95,\r",
+				"    iif(RISK == 'Risk 2 (Medium)', 85,\r",
+				"        iif(RISK == 'Risk 1 (High)', 75,\r",
+				"            80\r",
+				"        )\r",
+				"    )\r",
+				")) ~> derivedColumn1",
+				"surrogateKey1 alterRow(upsertIf(!isNull(RISK))) ~> alterRow1",
+				"derivedColumn1 keyGenerate(output(Risk_Key as long),",
+				"     startAt: 6L,",
 				"     stepValue: 1L) ~> surrogateKey1",
-				"surrogateKey1 alterRow(upsertIf(!isNull(STREET_ADDRESS))) ~> alterRow1",
 				"alterRow1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
-				"          LOCATION_KEY as decimal(10,0),",
-				"          LONGITUDE as double,",
-				"          LATITUDE as double,",
-				"          LOCATION as string,",
-				"          ZIP_CODE as string,",
-				"          STATE as string,",
-				"          CITY as string,",
-				"          ADDRESS as string",
+				"          RISK_KEY as decimal(38,0),",
+				"          RISK_LEVEL as string,",
+				"          INSPECTION_SCORE as decimal(38,0)",
 				"     ),",
 				"     deletable:false,",
 				"     insertable:true,",
 				"     updateable:true,",
 				"     upsertable:true,",
-				"     keys:['ADDRESS'],",
+				"     keys:['RISK_LEVEL'],",
 				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
 				"     stageInsert: true,",
 				"     mapColumn(",
-				"          LOCATION_KEY = Location_Key,",
-				"          LONGITUDE,",
-				"          LATITUDE,",
-				"          LOCATION = LATLONG,",
-				"          ZIP_CODE,",
-				"          STATE,",
-				"          CITY,",
-				"          ADDRESS = STREET_ADDRESS",
+				"          RISK_KEY = Risk_Key,",
+				"          RISK_LEVEL = RISK,",
+				"          INSPECTION_SCORE = Inspection_Score",
 				"     )) ~> sink1"
 			]
 		}
