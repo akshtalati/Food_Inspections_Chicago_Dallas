@@ -1,0 +1,312 @@
+{
+	"name": "Fact_Dallas",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "Stg_dallas_Bh",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				},
+				{
+					"dataset": {
+						"referenceName": "DIM_Bus_BH",
+						"type": "DatasetReference"
+					},
+					"name": "source2"
+				},
+				{
+					"dataset": {
+						"referenceName": "Dim_Facality_Bh",
+						"type": "DatasetReference"
+					},
+					"name": "source3"
+				},
+				{
+					"dataset": {
+						"referenceName": "DIM_Location_BH",
+						"type": "DatasetReference"
+					},
+					"name": "source4"
+				},
+				{
+					"dataset": {
+						"referenceName": "DIM_Violation_BH",
+						"type": "DatasetReference"
+					},
+					"name": "source5"
+				},
+				{
+					"dataset": {
+						"referenceName": "DIM_RISK_BH",
+						"type": "DatasetReference"
+					},
+					"name": "source6"
+				},
+				{
+					"dataset": {
+						"referenceName": "DIM_Date_BH",
+						"type": "DatasetReference"
+					},
+					"name": "source7"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "Fact_Dallas_BH",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "join1"
+				},
+				{
+					"name": "join2"
+				},
+				{
+					"name": "join3"
+				},
+				{
+					"name": "join4"
+				},
+				{
+					"name": "join5"
+				},
+				{
+					"name": "join6"
+				},
+				{
+					"name": "select1"
+				},
+				{
+					"name": "aggregate1"
+				},
+				{
+					"name": "surrogateKey1"
+				},
+				{
+					"name": "alterRow1"
+				},
+				{
+					"name": "surrogateKey2"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          RECORDID as decimal(38,0),",
+				"          RESTAURANT_NAME as string,",
+				"          INSPECTION_TYPE as string,",
+				"          INSPECTION_DATE as date,",
+				"          INSPECTION_SCORE as decimal(38,0),",
+				"          STREET_ADDRESS as string,",
+				"          ZIP_CODE as string,",
+				"          LATLONG as string,",
+				"          VIOLATION_DESC as string,",
+				"          DESCRIPTION as string,",
+				"          LATITUDE as double,",
+				"          LONGITUDE as double,",
+				"          FACILITY_TYPE as string,",
+				"          CITY as string,",
+				"          STATE as string,",
+				"          RESULTS as string,",
+				"          RISK as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     format: 'table') ~> source1",
+				"source(output(",
+				"          BUSINESS_KEY as decimal(10,0),",
+				"          AKA_NAME as string,",
+				"          DBA_NAME as string,",
+				"          LICENSE as decimal(10,0)",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     format: 'table') ~> source2",
+				"source(output(",
+				"          FACILITY_KEY as decimal(10,0),",
+				"          FACILITY_TYPE as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     format: 'table') ~> source3",
+				"source(output(",
+				"          LOCATION_KEY as decimal(10,0),",
+				"          LONGITUDE as double,",
+				"          LATITUDE as double,",
+				"          LOCATION as string,",
+				"          ZIP_CODE as string,",
+				"          STATE as string,",
+				"          CITY as string,",
+				"          ADDRESS as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     format: 'table') ~> source4",
+				"source(output(",
+				"          VIOLATION_KEY as decimal(38,0),",
+				"          VIOLATION_DESCRIPTION as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     format: 'table') ~> source5",
+				"source(output(",
+				"          RISK_KEY as decimal(38,0),",
+				"          RISK_LEVEL as string,",
+				"          INSPECTION_SCORE as decimal(38,0)",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     format: 'table') ~> source6",
+				"source(output(",
+				"          DATE_KEY as decimal(38,0),",
+				"          INSPECTION_DATE as date,",
+				"          YEAR as string,",
+				"          MONTH as string,",
+				"          WEEKDAY as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     format: 'table') ~> source7",
+				"source1, source2 join(RESTAURANT_NAME == DBA_NAME,",
+				"     joinType:'inner',",
+				"     matchType:'exact',",
+				"     ignoreSpaces: false,",
+				"     broadcast: 'auto')~> join1",
+				"join1, source3 join(source1@FACILITY_TYPE == source3@FACILITY_TYPE,",
+				"     joinType:'inner',",
+				"     matchType:'exact',",
+				"     ignoreSpaces: false,",
+				"     broadcast: 'auto')~> join2",
+				"join2, source4 join(STREET_ADDRESS == ADDRESS,",
+				"     joinType:'inner',",
+				"     matchType:'exact',",
+				"     ignoreSpaces: false,",
+				"     broadcast: 'auto')~> join3",
+				"join3, source5 join(DESCRIPTION == VIOLATION_DESCRIPTION,",
+				"     joinType:'inner',",
+				"     matchType:'exact',",
+				"     ignoreSpaces: false,",
+				"     broadcast: 'auto')~> join4",
+				"join4, source6 join(source1@INSPECTION_SCORE == source6@INSPECTION_SCORE,",
+				"     joinType:'inner',",
+				"     matchType:'exact',",
+				"     ignoreSpaces: false,",
+				"     broadcast: 'auto')~> join5",
+				"join5, source7 join(source1@INSPECTION_DATE == source7@INSPECTION_DATE,",
+				"     joinType:'inner',",
+				"     matchType:'exact',",
+				"     ignoreSpaces: false,",
+				"     broadcast: 'auto')~> join6",
+				"join6 select(mapColumn(",
+				"          RECORDID,",
+				"          RESTAURANT_NAME,",
+				"          INSPECTION_TYPE,",
+				"          INSPECTION_DATE = source1@INSPECTION_DATE,",
+				"          INSPECTION_SCORE = source1@INSPECTION_SCORE,",
+				"          STREET_ADDRESS,",
+				"          ZIP_CODE = source1@ZIP_CODE,",
+				"          LATLONG,",
+				"          VIOLATION_DESC,",
+				"          DESCRIPTION,",
+				"          LATITUDE = source1@LATITUDE,",
+				"          LONGITUDE = source1@LONGITUDE,",
+				"          FACILITY_TYPE = source1@FACILITY_TYPE,",
+				"          CITY = source1@CITY,",
+				"          STATE = source1@STATE,",
+				"          RESULTS,",
+				"          RISK,",
+				"          BUSINESS_KEY,",
+				"          AKA_NAME,",
+				"          DBA_NAME,",
+				"          LICENSE,",
+				"          FACILITY_KEY,",
+				"          FACILITY_TYPE = source3@FACILITY_TYPE,",
+				"          LOCATION_KEY,",
+				"          LONGITUDE = source4@LONGITUDE,",
+				"          LATITUDE = source4@LATITUDE,",
+				"          LOCATION,",
+				"          ZIP_CODE = source4@ZIP_CODE,",
+				"          STATE = source4@STATE,",
+				"          CITY = source4@CITY,",
+				"          ADDRESS,",
+				"          VIOLATION_KEY,",
+				"          VIOLATION_DESCRIPTION,",
+				"          RISK_KEY,",
+				"          RISK_LEVEL,",
+				"          INSPECTION_SCORE = source6@INSPECTION_SCORE,",
+				"          DATE_KEY,",
+				"          INSPECTION_DATE = source7@INSPECTION_DATE,",
+				"          YEAR,",
+				"          MONTH,",
+				"          WEEKDAY",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select1",
+				"select1 aggregate(groupBy(BUSINESS_KEY,",
+				"          DATE_KEY,",
+				"          RISK_KEY,",
+				"          VIOLATION_KEY,",
+				"          LOCATION_KEY,",
+				"          FACILITY_KEY,",
+				"          INSPECTION_TYPE,",
+				"          RESULTS,",
+				"          CITY),",
+				"     RESTAURANT_NAME = first(RESTAURANT_NAME),",
+				"          VIOLATION_DESC = first(VIOLATION_DESC),",
+				"          LICENSE = first(LICENSE)) ~> aggregate1",
+				"surrogateKey2 keyGenerate(output(Inspection_Event_Key as long),",
+				"     startAt: 283327L,",
+				"     stepValue: 1L) ~> surrogateKey1",
+				"surrogateKey1 alterRow(upsertIf(!isNull(Inspection_Event_Key))) ~> alterRow1",
+				"aggregate1 keyGenerate(output(Inspection_ID as long),",
+				"     startAt: 2613138L,",
+				"     stepValue: 1L) ~> surrogateKey2",
+				"alterRow1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          INSPECTION_EVENT_KEY as decimal(38,0),",
+				"          FACILITY_KEY as decimal(38,0),",
+				"          BUSINESS_KEY as decimal(38,0),",
+				"          LOCATION_KEY as decimal(38,0),",
+				"          VIOLATION_KEY as decimal(38,0),",
+				"          DATE_KEY as decimal(38,0),",
+				"          RISK_KEY as decimal(38,0),",
+				"          INSPECTION_TYPE as string,",
+				"          RESULTS as string,",
+				"          INSPECTION_ID as decimal(38,0),",
+				"          CITY_NAME as string",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:true,",
+				"     upsertable:true,",
+				"     keys:['INSPECTION_EVENT_KEY'],",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     stageInsert: true,",
+				"     mapColumn(",
+				"          INSPECTION_EVENT_KEY = Inspection_Event_Key,",
+				"          FACILITY_KEY,",
+				"          BUSINESS_KEY,",
+				"          LOCATION_KEY,",
+				"          VIOLATION_KEY,",
+				"          DATE_KEY,",
+				"          RISK_KEY,",
+				"          INSPECTION_TYPE,",
+				"          RESULTS,",
+				"          INSPECTION_ID = Inspection_ID,",
+				"          CITY_NAME = CITY",
+				"     )) ~> sink1"
+			]
+		}
+	}
+}
