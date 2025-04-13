@@ -5,6 +5,8 @@
 			{
 				"name": "Staging_dataset",
 				"type": "Copy",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "0.00:30:00",
@@ -252,11 +254,9 @@
 			{
 				"name": "dim_risk",
 				"type": "ExecuteDataFlow",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
-						"activity": "Staging_dataset",
+						"activity": "Chicago_flattned_stage",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -285,8 +285,6 @@
 			{
 				"name": "Dim_Business",
 				"type": "ExecuteDataFlow",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "dim_risk",
@@ -318,8 +316,6 @@
 			{
 				"name": "Dim_facility",
 				"type": "ExecuteDataFlow",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Dim_Business",
@@ -351,8 +347,6 @@
 			{
 				"name": "Dim_Date",
 				"type": "ExecuteDataFlow",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Dim_facility",
@@ -384,8 +378,6 @@
 			{
 				"name": "Dim_Location",
 				"type": "ExecuteDataFlow",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Dim_Date",
@@ -417,8 +409,6 @@
 			{
 				"name": "Dim_Vilolation",
 				"type": "ExecuteDataFlow",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Dim_Location",
@@ -478,6 +468,33 @@
 						"computeType": "General"
 					},
 					"traceLevel": "Coarse"
+				}
+			},
+			{
+				"name": "Chicago_flattned_stage",
+				"type": "ExecuteDataFlow",
+				"dependsOn": [
+					{
+						"activity": "Staging_dataset",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"compute": {
+						"coreCount": 8,
+						"computeType": "General"
+					},
+					"traceLevel": "Fine"
 				}
 			}
 		],
