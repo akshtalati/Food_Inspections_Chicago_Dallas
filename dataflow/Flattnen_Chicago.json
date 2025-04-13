@@ -27,6 +27,9 @@
 				},
 				{
 					"name": "flatten1"
+				},
+				{
+					"name": "aggregate1"
 				}
 			],
 			"scriptLines": [
@@ -54,7 +57,7 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     format: 'table') ~> source1",
-				"source1 derive(VIOLATIONS = split(VIOLATIONS,'|')) ~> derivedColumn1",
+				"aggregate1 derive(VIOLATIONS = split(VIOLATIONS,' | ')) ~> derivedColumn1",
 				"derivedColumn1 foldDown(unroll(VIOLATIONS),",
 				"     mapColumn(",
 				"          INSPECTIONID,",
@@ -79,6 +82,25 @@
 				"     ),",
 				"     skipDuplicateMapInputs: false,",
 				"     skipDuplicateMapOutputs: false) ~> flatten1",
+				"source1 aggregate(groupBy(DBA_NAME,",
+				"          AKA_NAME,",
+				"          LICENSE,",
+				"          FACILITY_TYPE,",
+				"          RISK,",
+				"          ADDRESS,",
+				"          CITY,",
+				"          STATE,",
+				"          ZIP,",
+				"          INSPECTION_DATE,",
+				"          INSPECTION_TYPE,",
+				"          RESULTS,",
+				"          VIOLATIONS,",
+				"          LATITUDE,",
+				"          LONGITUDE,",
+				"          LOCATION,",
+				"          VIOLATION_CODE,",
+				"          VIOLATION_DESCRIPTION),",
+				"     INSPECTIONID = first(INSPECTIONID)) ~> aggregate1",
 				"flatten1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
