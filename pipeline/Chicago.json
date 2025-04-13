@@ -246,7 +246,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "Stage_CHICAGO",
+						"referenceName": "Unflattned_Chicago",
 						"type": "DatasetReference"
 					}
 				]
@@ -258,7 +258,7 @@
 				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
-						"activity": "Staging_dataset",
+						"activity": "Chicago_flattned_stage",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -480,6 +480,39 @@
 						"computeType": "General"
 					},
 					"traceLevel": "Coarse"
+				}
+			},
+			{
+				"name": "Chicago_flattned_stage",
+				"type": "ExecuteDataFlow",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
+				"dependsOn": [
+					{
+						"activity": "Staging_dataset",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataflow": {
+						"referenceName": "Flattnen_Chicago",
+						"type": "DataFlowReference"
+					},
+					"compute": {
+						"coreCount": 8,
+						"computeType": "General"
+					},
+					"traceLevel": "Fine"
 				}
 			}
 		],
