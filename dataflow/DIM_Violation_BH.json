@@ -74,7 +74,7 @@
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> select2",
 				"select2 keyGenerate(output(Violation_Key as long),",
-				"     startAt: 44497L,",
+				"     startAt: 105795L,",
 				"     stepValue: 1L) ~> surrogateKey1",
 				"surrogateKey1 alterRow(upsertIf(!isNull(VIOLATION_DESC))) ~> alterRow1",
 				"alterRow1 sink(allowSchemaDrift: true,",
