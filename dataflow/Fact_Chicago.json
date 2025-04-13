@@ -264,12 +264,12 @@
 				"          RISK_KEY,",
 				"          LOCATION_KEY,",
 				"          BUSINESS_KEY,",
-				"          INSPECTION_TYPE),",
+				"          INSPECTION_TYPE,",
+				"          RESULTS),",
 				"     INSPECTIONID = first(INSPECTIONID),",
 				"          LICENSE = first(LICENSE),",
 				"          VIOLATIONS = first(VIOLATIONS),",
-				"          INSPECTION_DATE = first(INSPECTION_DATE),",
-				"          RESULTS = first(RESULTS)) ~> aggregate1",
+				"          INSPECTION_DATE = first(INSPECTION_DATE)) ~> aggregate1",
 				"aggregate1 select(mapColumn(",
 				"          VIOLATION_KEY,",
 				"          FACILITY_KEY,",
@@ -318,7 +318,10 @@
 				"          VIOLATION_KEY,",
 				"          DATE_KEY,",
 				"          RISK_KEY,",
-				"          INSPECTION_TYPE",
+				"          INSPECTION_TYPE,",
+				"          INSPECTION_ID = INSPECTIONID,",
+				"          RESULTS = VIOLATION_KEY,",
+				"          CITY_NAME = City",
 				"     )) ~> sink1"
 			]
 		}
