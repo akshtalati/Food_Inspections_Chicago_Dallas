@@ -1,0 +1,137 @@
+{
+	"name": "Flattnen_Chicago",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "Unflattned_Chicago",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "Stage_CHICAGO",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "derivedColumn1"
+				},
+				{
+					"name": "flatten1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          INSPECTIONID as decimal(38,0),",
+				"          DBA_NAME as string,",
+				"          AKA_NAME as string,",
+				"          LICENSE as double,",
+				"          FACILITY_TYPE as string,",
+				"          RISK as string,",
+				"          ADDRESS as string,",
+				"          CITY as string,",
+				"          STATE as string,",
+				"          ZIP as double,",
+				"          INSPECTION_DATE as date,",
+				"          INSPECTION_TYPE as string,",
+				"          RESULTS as string,",
+				"          VIOLATIONS as string,",
+				"          LATITUDE as double,",
+				"          LONGITUDE as double,",
+				"          LOCATION as string,",
+				"          VIOLATION_CODE as string,",
+				"          VIOLATION_DESCRIPTION as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     format: 'table') ~> source1",
+				"source1 derive(VIOLATIONS = split(VIOLATIONS,'|')) ~> derivedColumn1",
+				"derivedColumn1 foldDown(unroll(VIOLATIONS),",
+				"     mapColumn(",
+				"          INSPECTIONID,",
+				"          DBA_NAME,",
+				"          AKA_NAME,",
+				"          LICENSE,",
+				"          FACILITY_TYPE,",
+				"          RISK,",
+				"          ADDRESS,",
+				"          CITY,",
+				"          STATE,",
+				"          ZIP,",
+				"          INSPECTION_DATE,",
+				"          INSPECTION_TYPE,",
+				"          RESULTS,",
+				"          VIOLATIONS,",
+				"          LATITUDE,",
+				"          LONGITUDE,",
+				"          LOCATION,",
+				"          VIOLATION_CODE,",
+				"          VIOLATION_DESCRIPTION",
+				"     ),",
+				"     skipDuplicateMapInputs: false,",
+				"     skipDuplicateMapOutputs: false) ~> flatten1",
+				"flatten1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          INSPECTIONID as decimal(38,0),",
+				"          DBA_NAME as string,",
+				"          AKA_NAME as string,",
+				"          LICENSE as double,",
+				"          FACILITY_TYPE as string,",
+				"          RISK as string,",
+				"          ADDRESS as string,",
+				"          CITY as string,",
+				"          STATE as string,",
+				"          ZIP as double,",
+				"          INSPECTION_DATE as date,",
+				"          INSPECTION_TYPE as string,",
+				"          RESULTS as string,",
+				"          VIOLATIONS as string,",
+				"          LATITUDE as double,",
+				"          LONGITUDE as double,",
+				"          LOCATION as string,",
+				"          VIOLATION_CODE as string,",
+				"          VIOLATION_DESCRIPTION as string",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     stageInsert: true,",
+				"     mapColumn(",
+				"          INSPECTIONID,",
+				"          DBA_NAME,",
+				"          AKA_NAME,",
+				"          LICENSE,",
+				"          FACILITY_TYPE,",
+				"          RISK,",
+				"          ADDRESS,",
+				"          CITY,",
+				"          STATE,",
+				"          ZIP,",
+				"          INSPECTION_DATE,",
+				"          INSPECTION_TYPE,",
+				"          RESULTS,",
+				"          VIOLATIONS,",
+				"          LATITUDE,",
+				"          LONGITUDE,",
+				"          LOCATION,",
+				"          VIOLATION_CODE,",
+				"          VIOLATION_DESCRIPTION",
+				"     )) ~> sink1"
+			]
+		}
+	}
+}
