@@ -95,7 +95,7 @@
 					"name": "aggregate1"
 				},
 				{
-					"name": "select2"
+					"name": "select3"
 				}
 			],
 			"scriptLines": [
@@ -207,7 +207,7 @@
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
 				"     broadcast: 'auto')~> join6",
-				"select2 keyGenerate(output(Inspection_Event_Key as long),",
+				"aggregate1 keyGenerate(output(Inspection_Event_Key as long),",
 				"     startAt: 1L,",
 				"     stepValue: 1L) ~> surrogateKey1",
 				"surrogateKey1 derive(City = \"Chicago\") ~> derivedColumn1",
@@ -270,7 +270,7 @@
 				"          LICENSE = first(LICENSE),",
 				"          VIOLATIONS = first(VIOLATIONS),",
 				"          INSPECTION_DATE = first(INSPECTION_DATE)) ~> aggregate1",
-				"aggregate1 select(mapColumn(",
+				"derivedColumn1 select(mapColumn(",
 				"          VIOLATION_KEY,",
 				"          FACILITY_KEY,",
 				"          DATE_KEY,",
@@ -278,16 +278,16 @@
 				"          LOCATION_KEY,",
 				"          BUSINESS_KEY,",
 				"          INSPECTION_TYPE,",
-				"          RESULTS = aggregate1@RESULTS,",
 				"          INSPECTIONID,",
 				"          LICENSE,",
 				"          VIOLATIONS,",
 				"          INSPECTION_DATE,",
-				"          RESULTS = aggregate1@RESULTS",
+				"          Inspection_Event_Key,",
+				"          City",
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> select2",
-				"derivedColumn1 sink(allowSchemaDrift: true,",
+				"     skipDuplicateMapOutputs: true) ~> select3",
+				"select3 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
 				"          INSPECTION_EVENT_KEY as decimal(38,0),",
