@@ -312,16 +312,13 @@
 				"     stageInsert: true,",
 				"     mapColumn(",
 				"          INSPECTION_EVENT_KEY = Inspection_Event_Key,",
-				"          INSPECTION_ID = INSPECTIONID,",
-				"          VIOLATION_KEY,",
 				"          FACILITY_KEY,",
+				"          BUSINESS_KEY,",
+				"          LOCATION_KEY,",
+				"          VIOLATION_KEY,",
 				"          DATE_KEY,",
 				"          RISK_KEY,",
-				"          LOCATION_KEY,",
-				"          BUSINESS_KEY,",
-				"          INSPECTION_TYPE,",
-				"          RESULTS,",
-				"          CITY_NAME = City",
+				"          INSPECTION_TYPE",
 				"     )) ~> sink1"
 			]
 		}
