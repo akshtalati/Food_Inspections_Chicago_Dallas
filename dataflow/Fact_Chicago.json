@@ -93,9 +93,6 @@
 				},
 				{
 					"name": "aggregate1"
-				},
-				{
-					"name": "select3"
 				}
 			],
 			"scriptLines": [
@@ -270,24 +267,7 @@
 				"          LICENSE = first(LICENSE),",
 				"          VIOLATIONS = first(VIOLATIONS),",
 				"          INSPECTION_DATE = first(INSPECTION_DATE)) ~> aggregate1",
-				"derivedColumn1 select(mapColumn(",
-				"          VIOLATION_KEY,",
-				"          FACILITY_KEY,",
-				"          DATE_KEY,",
-				"          RISK_KEY,",
-				"          LOCATION_KEY,",
-				"          BUSINESS_KEY,",
-				"          INSPECTION_TYPE,",
-				"          INSPECTIONID,",
-				"          LICENSE,",
-				"          VIOLATIONS,",
-				"          INSPECTION_DATE,",
-				"          Inspection_Event_Key,",
-				"          City",
-				"     ),",
-				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> select3",
-				"select3 sink(allowSchemaDrift: true,",
+				"derivedColumn1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
 				"          INSPECTION_EVENT_KEY as decimal(38,0),",
@@ -319,6 +299,7 @@
 				"          DATE_KEY,",
 				"          RISK_KEY,",
 				"          INSPECTION_TYPE,",
+				"          RESULTS,",
 				"          INSPECTION_ID = INSPECTIONID,",
 				"          CITY_NAME = City",
 				"     )) ~> sink1"
