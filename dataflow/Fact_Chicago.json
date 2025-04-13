@@ -90,6 +90,12 @@
 				},
 				{
 					"name": "select1"
+				},
+				{
+					"name": "aggregate1"
+				},
+				{
+					"name": "select2"
 				}
 			],
 			"scriptLines": [
@@ -201,7 +207,7 @@
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
 				"     broadcast: 'auto')~> join6",
-				"select1 keyGenerate(output(Inspection_Event_Key as long),",
+				"select2 keyGenerate(output(Inspection_Event_Key as long),",
 				"     startAt: 1L,",
 				"     stepValue: 1L) ~> surrogateKey1",
 				"surrogateKey1 derive(City = \"Chicago\") ~> derivedColumn1",
@@ -252,6 +258,35 @@
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> select1",
+				"select1 aggregate(groupBy(VIOLATION_KEY,",
+				"          FACILITY_KEY,",
+				"          DATE_KEY,",
+				"          RISK_KEY,",
+				"          LOCATION_KEY,",
+				"          BUSINESS_KEY,",
+				"          INSPECTION_TYPE),",
+				"     INSPECTIONID = first(INSPECTIONID),",
+				"          LICENSE = first(LICENSE),",
+				"          VIOLATIONS = first(VIOLATIONS),",
+				"          INSPECTION_DATE = first(INSPECTION_DATE),",
+				"          RESULTS = first(RESULTS)) ~> aggregate1",
+				"aggregate1 select(mapColumn(",
+				"          VIOLATION_KEY,",
+				"          FACILITY_KEY,",
+				"          DATE_KEY,",
+				"          RISK_KEY,",
+				"          LOCATION_KEY,",
+				"          BUSINESS_KEY,",
+				"          INSPECTION_TYPE,",
+				"          RESULTS = aggregate1@RESULTS,",
+				"          INSPECTIONID,",
+				"          LICENSE,",
+				"          VIOLATIONS,",
+				"          INSPECTION_DATE,",
+				"          RESULTS = aggregate1@RESULTS",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select2",
 				"derivedColumn1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
@@ -286,7 +321,7 @@
 				"          BUSINESS_KEY,",
 				"          INSPECTION_TYPE,",
 				"          RESULTS,",
-				"          CITY_NAME = derivedColumn1@City",
+				"          CITY_NAME = City",
 				"     )) ~> sink1"
 			]
 		}
