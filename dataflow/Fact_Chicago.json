@@ -320,7 +320,6 @@
 				"          RISK_KEY,",
 				"          INSPECTION_TYPE,",
 				"          INSPECTION_ID = INSPECTIONID,",
-				"          RESULTS = VIOLATION_KEY,",
 				"          CITY_NAME = City",
 				"     )) ~> sink1"
 			]
