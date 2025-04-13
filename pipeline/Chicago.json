@@ -254,6 +254,8 @@
 			{
 				"name": "dim_risk",
 				"type": "ExecuteDataFlow",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Chicago_flattned_stage",
@@ -285,6 +287,8 @@
 			{
 				"name": "Dim_Business",
 				"type": "ExecuteDataFlow",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "dim_risk",
@@ -316,6 +320,8 @@
 			{
 				"name": "Dim_facility",
 				"type": "ExecuteDataFlow",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Dim_Business",
@@ -347,6 +353,8 @@
 			{
 				"name": "Dim_Date",
 				"type": "ExecuteDataFlow",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Dim_facility",
@@ -378,6 +386,8 @@
 			{
 				"name": "Dim_Location",
 				"type": "ExecuteDataFlow",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Dim_Date",
@@ -409,6 +419,8 @@
 			{
 				"name": "Dim_Vilolation",
 				"type": "ExecuteDataFlow",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Dim_Location",
@@ -440,6 +452,8 @@
 			{
 				"name": "Fact_Chicago",
 				"type": "ExecuteDataFlow",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Dim_Vilolation",
@@ -471,6 +485,8 @@
 			{
 				"name": "Chicago_flattned_stage",
 				"type": "ExecuteDataFlow",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Staging_dataset",
