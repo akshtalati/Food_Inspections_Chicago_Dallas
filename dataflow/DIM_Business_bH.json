@@ -1,0 +1,111 @@
+{
+	"name": "DIM_Business_bH",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "Stg_dallas_Bh",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "DIM_Bus_BH",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "derivedColumn1"
+				},
+				{
+					"name": "aggregate1"
+				},
+				{
+					"name": "select1"
+				},
+				{
+					"name": "surrogateKey1"
+				},
+				{
+					"name": "surrogateKey2"
+				},
+				{
+					"name": "alterRow1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          RECORDID as decimal(38,0),",
+				"          RESTAURANT_NAME as string,",
+				"          INSPECTION_TYPE as string,",
+				"          INSPECTION_DATE as date,",
+				"          INSPECTION_SCORE as decimal(38,0),",
+				"          STREET_ADDRESS as string,",
+				"          ZIP_CODE as string,",
+				"          LATLONG as string,",
+				"          VIOLATION_DESC as string,",
+				"          DESCRIPTION as string,",
+				"          LATITUDE as double,",
+				"          LONGITUDE as double,",
+				"          FACILITY_TYPE as string,",
+				"          CITY as string,",
+				"          STATE as string,",
+				"          RESULTS as string,",
+				"          RISK as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     format: 'table') ~> source1",
+				"source1 derive(DBA__NAME = iif(isNull(RESTAURANT_NAME), 'Unknown', RESTAURANT_NAME),",
+				"          AKA_Name = iif(isNull(RESTAURANT_NAME), 'Unknown', RESTAURANT_NAME)) ~> derivedColumn1",
+				"derivedColumn1 aggregate(groupBy(DBA__NAME,",
+				"          AKA_Name),",
+				"     DBA_NAME_1 = first(DBA__NAME)) ~> aggregate1",
+				"aggregate1 select(mapColumn(",
+				"          AKA_Name,",
+				"          DBA_NAME_1",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select1",
+				"select1 keyGenerate(output(License as long),",
+				"     startAt: 4080355L,",
+				"     stepValue: 1L) ~> surrogateKey1",
+				"surrogateKey1 keyGenerate(output(Business_Key as long),",
+				"     startAt: 19419L,",
+				"     stepValue: 1L) ~> surrogateKey2",
+				"surrogateKey2 alterRow(upsertIf(!isNull(DBA_NAME_1))) ~> alterRow1",
+				"alterRow1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          BUSINESS_KEY as decimal(10,0),",
+				"          AKA_NAME as string,",
+				"          DBA_NAME as string,",
+				"          LICENSE as decimal(10,0)",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:true,",
+				"     upsertable:true,",
+				"     keys:['DBA_NAME'],",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     stageInsert: true,",
+				"     mapColumn(",
+				"          BUSINESS_KEY = Business_Key,",
+				"          AKA_NAME = AKA_Name,",
+				"          DBA_NAME = DBA_NAME_1,",
+				"          LICENSE = License",
+				"     )) ~> sink1"
+			]
+		}
+	}
+}

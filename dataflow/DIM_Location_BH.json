@@ -1,0 +1,118 @@
+{
+	"name": "DIM_Location_BH",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "Stg_dallas_Bh",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "Location_BH",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "select1"
+				},
+				{
+					"name": "aggregate1"
+				},
+				{
+					"name": "surrogateKey1",
+					"description": "Adding new key Location_Key starting from 12789 with step 1"
+				},
+				{
+					"name": "alterRow1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          RECORDID as decimal(38,0),",
+				"          RESTAURANT_NAME as string,",
+				"          INSPECTION_TYPE as string,",
+				"          INSPECTION_DATE as date,",
+				"          INSPECTION_SCORE as decimal(38,0),",
+				"          STREET_ADDRESS as string,",
+				"          ZIP_CODE as string,",
+				"          LATLONG as string,",
+				"          VIOLATION_DESC as string,",
+				"          DESCRIPTION as string,",
+				"          LATITUDE as double,",
+				"          LONGITUDE as double,",
+				"          FACILITY_TYPE as string,",
+				"          CITY as string,",
+				"          STATE as string,",
+				"          RESULTS as string,",
+				"          RISK as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     format: 'table') ~> source1",
+				"source1 select(mapColumn(",
+				"          STREET_ADDRESS,",
+				"          ZIP_CODE,",
+				"          LATLONG,",
+				"          LATITUDE,",
+				"          LONGITUDE,",
+				"          CITY,",
+				"          STATE",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select1",
+				"select1 aggregate(groupBy(ZIP_CODE,",
+				"          LATLONG,",
+				"          LATITUDE,",
+				"          LONGITUDE,",
+				"          CITY,",
+				"          STATE),",
+				"     STREET_ADDRESS = first(STREET_ADDRESS)) ~> aggregate1",
+				"aggregate1 keyGenerate(output(Location_Key as long),",
+				"     startAt: 12789L,",
+				"     stepValue: 1L) ~> surrogateKey1",
+				"surrogateKey1 alterRow(upsertIf(!isNull(STREET_ADDRESS))) ~> alterRow1",
+				"alterRow1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          LOCATION_KEY as decimal(10,0),",
+				"          LONGITUDE as double,",
+				"          LATITUDE as double,",
+				"          LOCATION as string,",
+				"          ZIP_CODE as string,",
+				"          STATE as string,",
+				"          CITY as string,",
+				"          ADDRESS as string",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:true,",
+				"     upsertable:true,",
+				"     keys:['ADDRESS'],",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     stageInsert: true,",
+				"     mapColumn(",
+				"          LOCATION_KEY = Location_Key,",
+				"          LONGITUDE,",
+				"          LATITUDE,",
+				"          LOCATION = LATLONG,",
+				"          ZIP_CODE,",
+				"          STATE,",
+				"          CITY,",
+				"          ADDRESS = STREET_ADDRESS",
+				"     )) ~> sink1"
+			]
+		}
+	}
+}

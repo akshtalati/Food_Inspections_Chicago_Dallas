@@ -1,0 +1,114 @@
+{
+	"name": "Dim_Risk_BH",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "Stg_dallas_Bh",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "DIM_RISK_BH",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "select1"
+				},
+				{
+					"name": "aggregate1"
+				},
+				{
+					"name": "select2"
+				},
+				{
+					"name": "derivedColumn1"
+				},
+				{
+					"name": "alterRow1"
+				},
+				{
+					"name": "surrogateKey1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          RECORDID as decimal(38,0),",
+				"          RESTAURANT_NAME as string,",
+				"          INSPECTION_TYPE as string,",
+				"          INSPECTION_DATE as date,",
+				"          INSPECTION_SCORE as decimal(38,0),",
+				"          STREET_ADDRESS as string,",
+				"          ZIP_CODE as string,",
+				"          LATLONG as string,",
+				"          VIOLATION_DESC as string,",
+				"          DESCRIPTION as string,",
+				"          LATITUDE as double,",
+				"          LONGITUDE as double,",
+				"          FACILITY_TYPE as string,",
+				"          CITY as string,",
+				"          STATE as string,",
+				"          RESULTS as string,",
+				"          RISK as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     format: 'table') ~> source1",
+				"source1 select(mapColumn(",
+				"          RISK",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select1",
+				"select1 aggregate(groupBy(RISK),",
+				"     RISK_level = first(RISK)) ~> aggregate1",
+				"aggregate1 select(mapColumn(",
+				"          RISK",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select2",
+				"select2 derive(Inspection_Score = iif(RISK == 'Risk 3 (Low)', 95,\r",
+				"    iif(RISK == 'Risk 2 (Medium)', 85,\r",
+				"        iif(RISK == 'Risk 1 (High)', 75,\r",
+				"            80\r",
+				"        )\r",
+				"    )\r",
+				")) ~> derivedColumn1",
+				"surrogateKey1 alterRow(upsertIf(!isNull(RISK))) ~> alterRow1",
+				"derivedColumn1 keyGenerate(output(Risk_Key as long),",
+				"     startAt: 6L,",
+				"     stepValue: 1L) ~> surrogateKey1",
+				"alterRow1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          RISK_KEY as decimal(38,0),",
+				"          RISK_LEVEL as string,",
+				"          INSPECTION_SCORE as decimal(38,0)",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:true,",
+				"     upsertable:true,",
+				"     keys:['RISK_LEVEL'],",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     stageInsert: true,",
+				"     mapColumn(",
+				"          RISK_KEY = Risk_Key,",
+				"          RISK_LEVEL = RISK,",
+				"          INSPECTION_SCORE = Inspection_Score",
+				"     )) ~> sink1"
+			]
+		}
+	}
+}

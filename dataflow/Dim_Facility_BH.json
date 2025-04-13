@@ -1,0 +1,98 @@
+{
+	"name": "Dim_Facility_BH",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "Stg_dallas_Bh",
+						"type": "DatasetReference"
+					},
+					"name": "Dallas"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "Dim_Facality_Bh",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "derivedColumn1"
+				},
+				{
+					"name": "aggregate1"
+				},
+				{
+					"name": "select1"
+				},
+				{
+					"name": "surrogateKey1"
+				},
+				{
+					"name": "alterRow1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          RECORDID as decimal(38,0),",
+				"          RESTAURANT_NAME as string,",
+				"          INSPECTION_TYPE as string,",
+				"          INSPECTION_DATE as date,",
+				"          INSPECTION_SCORE as decimal(38,0),",
+				"          STREET_ADDRESS as string,",
+				"          ZIP_CODE as string,",
+				"          LATLONG as string,",
+				"          VIOLATION_DESC as string,",
+				"          DESCRIPTION as string,",
+				"          LATITUDE as double,",
+				"          LONGITUDE as double,",
+				"          FACILITY_TYPE as string,",
+				"          CITY as string,",
+				"          STATE as string,",
+				"          RESULTS as string,",
+				"          RISK as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     format: 'table') ~> Dallas",
+				"Dallas derive(Facality_Type = iif(isNull(FACILITY_TYPE), 'Unknown', FACILITY_TYPE)) ~> derivedColumn1",
+				"derivedColumn1 aggregate(groupBy(Facality_Type),",
+				"     Facality_Type_First = first(Facality_Type)) ~> aggregate1",
+				"aggregate1 select(mapColumn(",
+				"          Facality_Type",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select1",
+				"select1 keyGenerate(output(Facality_key as long),",
+				"     startAt: 227L,",
+				"     stepValue: 1L) ~> surrogateKey1",
+				"surrogateKey1 alterRow(upsertIf(!isNull(Facality_Type))) ~> alterRow1",
+				"alterRow1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          FACILITY_KEY as decimal(10,0),",
+				"          FACILITY_TYPE as string",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:true,",
+				"     keys:['FACILITY_KEY'],",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     stageInsert: true,",
+				"     mapColumn(",
+				"          FACILITY_KEY = Facality_key,",
+				"          FACILITY_TYPE = Facality_Type",
+				"     )) ~> sink1"
+			]
+		}
+	}
+}

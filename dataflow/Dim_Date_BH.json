@@ -1,0 +1,101 @@
+{
+	"name": "Dim_Date_BH",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "Stg_dallas_Bh",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "DIM_Date_BH",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "derivedColumn1"
+				},
+				{
+					"name": "aggregate1"
+				},
+				{
+					"name": "surrogateKey1"
+				},
+				{
+					"name": "alterRow1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          RECORDID as decimal(38,0),",
+				"          RESTAURANT_NAME as string,",
+				"          INSPECTION_TYPE as string,",
+				"          INSPECTION_DATE as date,",
+				"          INSPECTION_SCORE as decimal(38,0),",
+				"          STREET_ADDRESS as string,",
+				"          ZIP_CODE as string,",
+				"          LATLONG as string,",
+				"          VIOLATION_DESC as string,",
+				"          DESCRIPTION as string,",
+				"          LATITUDE as double,",
+				"          LONGITUDE as double,",
+				"          FACILITY_TYPE as string,",
+				"          CITY as string,",
+				"          STATE as string,",
+				"          RESULTS as string,",
+				"          RISK as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     format: 'table') ~> source1",
+				"source1 derive(INSPECTION_DATE = INSPECTION_DATE,",
+				"          weekday = toString(toTimestamp(INSPECTION_DATE), 'EEEE'),",
+				"          month = month(toTimestamp(INSPECTION_DATE)),",
+				"          Year = year(toTimestamp(INSPECTION_DATE))) ~> derivedColumn1",
+				"derivedColumn1 aggregate(groupBy(weekday,",
+				"          month,",
+				"          Year),",
+				"     INSPECTION_DATE = first(INSPECTION_DATE)) ~> aggregate1",
+				"aggregate1 keyGenerate(output(Date_Key as long),",
+				"     startAt: 1043L,",
+				"     stepValue: 1L) ~> surrogateKey1",
+				"surrogateKey1 alterRow(upsertIf(!isNull(INSPECTION_DATE))) ~> alterRow1",
+				"alterRow1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          DATE_KEY as decimal(38,0),",
+				"          INSPECTION_DATE as date,",
+				"          YEAR as string,",
+				"          MONTH as string,",
+				"          WEEKDAY as string",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:true,",
+				"     upsertable:true,",
+				"     keys:['INSPECTION_DATE'],",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     stageInsert: true,",
+				"     mapColumn(",
+				"          DATE_KEY = Date_Key,",
+				"          INSPECTION_DATE,",
+				"          YEAR = Year,",
+				"          MONTH = month,",
+				"          WEEKDAY = weekday",
+				"     )) ~> sink1"
+			]
+		}
+	}
+}
