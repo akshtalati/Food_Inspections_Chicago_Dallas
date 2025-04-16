@@ -52,11 +52,205 @@
 							"type": "ParquetReadSettings"
 						}
 					},
-					"enableStaging": false
+					"sink": {
+						"type": "SnowflakeSink",
+						"importSettings": {
+							"type": "SnowflakeImportCopyCommand"
+						}
+					},
+					"enableStaging": true,
+					"stagingSettings": {
+						"linkedServiceName": {
+							"referenceName": "BlobStorage_AKSH",
+							"type": "LinkedServiceReference"
+						},
+						"path": "bronze"
+					},
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "Inspection ID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Inspection ID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DBA Name",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DBA Name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AKA Name",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AKA Name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "License #",
+									"type": "String"
+								},
+								"sink": {
+									"name": "License",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Facility Type",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Facility Type",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Risk",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Risk",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Address",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Address",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "City",
+									"type": "String"
+								},
+								"sink": {
+									"name": "City",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "State",
+									"type": "String"
+								},
+								"sink": {
+									"name": "State",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Zip",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Zip",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Inspection Date",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Inspection Date",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Inspection Type",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Inspection Type",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Results",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Results",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violations",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violations",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Latitude",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Latitude",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Longitude",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Longitude",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Location",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Location",
+									"type": "String"
+								}
+							}
+						]
+					}
 				},
 				"inputs": [
 					{
 						"referenceName": "Stage_uncleaned_chicago",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Stage_uncleaned_chicago_unioned",
 						"type": "DatasetReference"
 					}
 				]
@@ -85,11 +279,1175 @@
 							"type": "ParquetReadSettings"
 						}
 					},
-					"enableStaging": false
+					"sink": {
+						"type": "SnowflakeSink",
+						"importSettings": {
+							"type": "SnowflakeImportCopyCommand"
+						}
+					},
+					"enableStaging": true,
+					"stagingSettings": {
+						"linkedServiceName": {
+							"referenceName": "BlobStorage_AKSH",
+							"type": "LinkedServiceReference"
+						},
+						"path": "bronze"
+					},
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "Restaurant Name",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RESTAURANT_NAME",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Inspection Type",
+									"type": "String"
+								},
+								"sink": {
+									"name": "INSPECTION_TYPE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Inspection Date",
+									"type": "String"
+								},
+								"sink": {
+									"name": "INSPECTION_DATE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Inspection Score",
+									"type": "String"
+								},
+								"sink": {
+									"name": "INSPECTION_SCORE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Street Number",
+									"type": "String"
+								},
+								"sink": {
+									"name": "STREET_NUMBER",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Street Name",
+									"type": "String"
+								},
+								"sink": {
+									"name": "STREET_NAME",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Street Direction",
+									"type": "String"
+								},
+								"sink": {
+									"name": "STREET_DIRECTION",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Street Type",
+									"type": "String"
+								},
+								"sink": {
+									"name": "STREET_TYPE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Street Unit",
+									"type": "String"
+								},
+								"sink": {
+									"name": "STREET_UNIT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Street Address",
+									"type": "String"
+								},
+								"sink": {
+									"name": "STREET_ADDRESS",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Zip Code",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ZIP_CODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Description - 1",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Description - 1",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Points - 1",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Points - 1",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Detail - 1",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Detail - 1",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Memo - 1",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Memo - 1",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Description - 2",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Description - 2",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Points - 2",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Points - 2",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Detail - 2",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Detail - 2",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Memo - 2",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Memo - 2",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Description - 3",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Description - 3",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Points - 3",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Points - 3",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Detail - 3",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Detail - 3",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Memo - 3",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Memo - 3",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Description - 4",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Description - 4",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Points - 4",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Points - 4",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Detail - 4",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Detail - 4",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Memo - 4",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Memo - 4",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Description - 5",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Description - 5",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Points - 5",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Points - 5",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Detail - 5",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Detail - 5",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Memo - 5",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Memo - 5",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Description - 6",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Description - 6",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Points - 6",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Points - 6",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Detail - 6",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Detail - 6",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Memo - 6",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Memo - 6",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Description - 7",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Description - 7",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Points - 7",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Points - 7",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Detail - 7",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Detail - 7",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Memo - 7",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Memo - 7",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Description - 8",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Description - 8",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Points - 8",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Points - 8",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Detail - 8",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Detail - 8",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Memo - 8",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Memo - 8",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Description - 9",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Description - 9",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Points - 9",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Points - 9",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Detail - 9",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Detail - 9",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Memo - 9",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Memo - 9",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Description - 10",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Description - 10",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Points - 10",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Points - 10",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Detail - 10",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Detail - 10",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Memo - 10",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Memo - 10",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Description - 11",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Description - 11",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Points - 11",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Points - 11",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Detail - 11",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Detail - 11",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Memo - 11",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Memo - 11",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Description - 12",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Description - 12",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Points - 12",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Points - 12",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Detail - 12",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Detail - 12",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Memo - 12",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Memo - 12",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Description - 13",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Description - 13",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Points - 13",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Points - 13",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Detail - 13",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Detail - 13",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Memo - 13",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Memo - 13",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Description - 14",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Description - 14",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Points - 14",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Points - 14",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Detail - 14",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Detail - 14",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Memo - 14",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Memo - 14",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Description - 15",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Description - 15",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Points - 15",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Points - 15",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Detail - 15",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Detail - 15",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Memo - 15",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Memo - 15",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Description - 16",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Description - 16",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Points - 16",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Points - 16",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Detail - 16",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Detail - 16",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Memo - 16",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Memo - 16",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Description - 17",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Description - 17",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Points - 17",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Points - 17",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Detail - 17",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Detail - 17",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Memo - 17",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Memo - 17",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Description - 18",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Description - 18",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Points - 18",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Points - 18",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Detail - 18",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Detail - 18",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Memo - 18",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Memo - 18",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Description - 19",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Description - 19",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Points - 19",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Points - 19",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Detail - 19",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Detail - 19",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Memo - 19",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Memo - 19",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Description - 20",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Description - 20",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Points - 20",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Points - 20",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Detail - 20",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Detail - 20",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation  Memo - 20",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation  Memo - 20",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Description - 21",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Description - 21",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Points - 21",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Points - 21",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Detail - 21",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Detail - 21",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Memo - 21",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Memo - 21",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Description - 22",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Description - 22",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Points - 22",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Points - 22",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Detail - 22",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Detail - 22",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Memo - 22",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Memo - 22",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Description - 23",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Description - 23",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Points - 23",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Points - 23",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Detail - 23",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Detail - 23",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Memo - 23",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Memo - 23",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Description - 24",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Description - 24",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Points - 24",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Points - 24",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Detail - 24",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Detail - 24",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Memo - 24",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Memo - 24",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Description - 25",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Description - 25",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Points - 25",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Points - 25",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Detail - 25",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Detail - 25",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Violation Memo - 25",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Violation Memo - 25",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Inspection Month",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Inspection Month",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Inspection Year",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Inspection Year",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Lat Long Location",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Lat Long Location",
+									"type": "String"
+								}
+							}
+						]
+					}
 				},
 				"inputs": [
 					{
 						"referenceName": "Satge_uncleaned_dallas",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "dallas_raw_stage",
 						"type": "DatasetReference"
 					}
 				]

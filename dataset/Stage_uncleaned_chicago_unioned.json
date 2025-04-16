@@ -1,0 +1,119 @@
+{
+	"name": "Stage_uncleaned_chicago_unioned",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Snowflake_AKSH",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SnowflakeTable",
+		"schema": [
+			{
+				"name": "Inspection ID",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "DBA Name",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "AKA Name",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "License",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Facility Type",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Risk",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Address",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "City",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "State",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Zip",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Inspection Date",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Inspection Type",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Results",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violations",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Latitude",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Longitude",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Location",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			}
+		],
+		"typeProperties": {
+			"schema": "FINALPROJECT_SCHEMA",
+			"table": "STAGE_RAW_DATA"
+		}
+	}
+}

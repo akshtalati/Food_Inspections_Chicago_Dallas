@@ -262,6 +262,8 @@
 			{
 				"name": "Fact_Dallas",
 				"type": "ExecuteDataFlow",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "DIM_Violation",
@@ -320,7 +322,14 @@
 							"type": "SnowflakeImportCopyCommand"
 						}
 					},
-					"enableStaging": false
+					"enableStaging": true,
+					"stagingSettings": {
+						"linkedServiceName": {
+							"referenceName": "BlobStorage_AKSH",
+							"type": "LinkedServiceReference"
+						},
+						"path": "bronze"
+					}
 				},
 				"inputs": [
 					{
