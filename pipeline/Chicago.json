@@ -5,8 +5,6 @@
 			{
 				"name": "Staging_dataset",
 				"type": "Copy",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "0.00:30:00",
@@ -485,8 +483,6 @@
 			{
 				"name": "Chicago_flattned_stage",
 				"type": "ExecuteDataFlow",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Staging_dataset",
