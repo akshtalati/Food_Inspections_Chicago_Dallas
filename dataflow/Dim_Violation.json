@@ -68,7 +68,7 @@
 				"select1 aggregate(groupBy(VIOLATIONS),",
 				"     Violations = first(VIOLATIONS)) ~> aggregate1",
 				"select2 keyGenerate(output(ViolationKey as long),",
-				"     startAt: 1L,",
+				"     startAt: 135702L,",
 				"     stepValue: 1L) ~> surrogateKey1",
 				"aggregate1 select(mapColumn(",
 				"          Violations = aggregate1@VIOLATIONS",

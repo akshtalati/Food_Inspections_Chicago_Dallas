@@ -295,6 +295,8 @@
 			{
 				"name": "Stage_clean_dallas",
 				"type": "Copy",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",

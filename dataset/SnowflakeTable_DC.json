@@ -1,5 +1,5 @@
 {
-	"name": "Fact_Dallas_BH",
+	"name": "SnowflakeTable_DC",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "Snowflake_Bhargav",
@@ -69,9 +69,15 @@
 				"scale": 0
 			},
 			{
-				"name": "CITY_NAME",
+				"name": "SOURCE_NAME",
 				"type": "VARCHAR",
 				"precision": 50,
+				"scale": 0
+			},
+			{
+				"name": "DI_CREATED_DT",
+				"type": "DATE",
+				"precision": 10,
 				"scale": 0
 			}
 		],
