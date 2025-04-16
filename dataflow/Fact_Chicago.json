@@ -57,7 +57,7 @@
 			"sinks": [
 				{
 					"dataset": {
-						"referenceName": "Fact",
+						"referenceName": "Fact_chicago",
 						"type": "DatasetReference"
 					},
 					"name": "sink1"
@@ -207,7 +207,8 @@
 				"aggregate1 keyGenerate(output(Inspection_Event_Key as long),",
 				"     startAt: 1L,",
 				"     stepValue: 1L) ~> surrogateKey1",
-				"surrogateKey1 derive(City = \"Chicago\") ~> derivedColumn1",
+				"surrogateKey1 derive(City = \"Chicago\",",
+				"          DI_Create_DT = currentDate()) ~> derivedColumn1",
 				"join6 select(mapColumn(",
 				"          INSPECTIONID,",
 				"          DBA_NAME = stg@DBA_NAME,",
@@ -280,7 +281,8 @@
 				"          INSPECTION_TYPE as string,",
 				"          RESULTS as string,",
 				"          INSPECTION_ID as decimal(38,0),",
-				"          CITY_NAME as string",
+				"          SOURCE_NAME as string,",
+				"          DI_CREATED_DT as date",
 				"     ),",
 				"     deletable:false,",
 				"     insertable:true,",
@@ -301,7 +303,8 @@
 				"          INSPECTION_TYPE,",
 				"          RESULTS,",
 				"          INSPECTION_ID = INSPECTIONID,",
-				"          CITY_NAME = City",
+				"          SOURCE_NAME = City,",
+				"          DI_CREATED_DT = DI_Create_DT",
 				"     )) ~> sink1"
 			]
 		}

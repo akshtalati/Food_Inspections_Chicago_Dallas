@@ -1,0 +1,28 @@
+{
+	"name": "Chicago2",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "DataLake_AKSH",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "Chicago_2022-2023.tsv",
+				"fileSystem": "bronze"
+			},
+			"columnDelimiter": "\t",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "Inspection ID\tDBA Name\tAKA Name\tLicense #\tFacility Type\tRisk\tAddress\tCity\tState\tZip\tInspection Date\tInspection Type\tResults\tViolations\tLatitude\tLongitude\tLocation",
+				"type": "String"
+			}
+		]
+	}
+}

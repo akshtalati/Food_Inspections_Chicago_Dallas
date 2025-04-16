@@ -1,0 +1,100 @@
+{
+	"name": "Chicago_Unioined",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "DataLake_AKSH",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "Chicago_try",
+				"fileSystem": "silver"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "ARREST_KEY",
+				"type": "String"
+			},
+			{
+				"name": "ARREST_DATE",
+				"type": "String"
+			},
+			{
+				"name": "PD_CD",
+				"type": "String"
+			},
+			{
+				"name": "PD_DESC",
+				"type": "String"
+			},
+			{
+				"name": "KY_CD",
+				"type": "String"
+			},
+			{
+				"name": "OFNS_DESC",
+				"type": "String"
+			},
+			{
+				"name": "LAW_CODE",
+				"type": "String"
+			},
+			{
+				"name": "LAW_CAT_CD",
+				"type": "String"
+			},
+			{
+				"name": "ARREST_BORO",
+				"type": "String"
+			},
+			{
+				"name": "ARREST_PRECINCT",
+				"type": "String"
+			},
+			{
+				"name": "JURISDICTION_CODE",
+				"type": "String"
+			},
+			{
+				"name": "AGE_GROUP",
+				"type": "String"
+			},
+			{
+				"name": "PERP_SEX",
+				"type": "String"
+			},
+			{
+				"name": "PERP_RACE",
+				"type": "String"
+			},
+			{
+				"name": "X_COORD_CD",
+				"type": "String"
+			},
+			{
+				"name": "Y_COORD_CD",
+				"type": "String"
+			},
+			{
+				"name": "Latitude",
+				"type": "String"
+			},
+			{
+				"name": "Longitude",
+				"type": "String"
+			},
+			{
+				"name": "New_Georeferenced_Column",
+				"type": "String"
+			}
+		]
+	}
+}

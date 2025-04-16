@@ -1,0 +1,701 @@
+{
+	"name": "dallas_raw_stage",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Snowflake_AKSH",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SnowflakeTable",
+		"schema": [
+			{
+				"name": "RESTAURANT_NAME",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "INSPECTION_TYPE",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "INSPECTION_DATE",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "INSPECTION_SCORE",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "STREET_NUMBER",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "STREET_NAME",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "STREET_DIRECTION",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "STREET_TYPE",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "STREET_UNIT",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "STREET_ADDRESS",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "ZIP_CODE",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Description - 1",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Points - 1",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Detail - 1",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Memo - 1",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Description - 2",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Points - 2",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Detail - 2",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Memo - 2",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Description - 3",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Points - 3",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Detail - 3",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Memo - 3",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Description - 4",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Points - 4",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Detail - 4",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Memo - 4",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Description - 5",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Points - 5",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Detail - 5",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Memo - 5",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Description - 6",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Points - 6",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Detail - 6",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Memo - 6",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Description - 7",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Points - 7",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Detail - 7",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Memo - 7",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Description - 8",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Points - 8",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Detail - 8",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Memo - 8",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Description - 9",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Points - 9",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Detail - 9",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Memo - 9",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Description - 10",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Points - 10",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Detail - 10",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Memo - 10",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Description - 11",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Points - 11",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Detail - 11",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Memo - 11",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Description - 12",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Points - 12",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Detail - 12",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Memo - 12",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Description - 13",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Points - 13",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Detail - 13",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Memo - 13",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Description - 14",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Points - 14",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Detail - 14",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Memo - 14",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Description - 15",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Points - 15",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Detail - 15",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Memo - 15",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Description - 16",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Points - 16",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Detail - 16",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Memo - 16",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Description - 17",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Points - 17",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Detail - 17",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Memo - 17",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Description - 18",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Points - 18",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Detail - 18",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Memo - 18",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Description - 19",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Points - 19",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Detail - 19",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Memo - 19",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Description - 20",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Points - 20",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Detail - 20",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation  Memo - 20",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Description - 21",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Points - 21",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Detail - 21",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Memo - 21",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Description - 22",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Points - 22",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Detail - 22",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Memo - 22",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Description - 23",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Points - 23",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Detail - 23",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Memo - 23",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Description - 24",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Points - 24",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Detail - 24",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Memo - 24",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Description - 25",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Points - 25",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Detail - 25",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Violation Memo - 25",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Inspection Month",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Inspection Year",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			},
+			{
+				"name": "Lat Long Location",
+				"type": "VARCHAR",
+				"precision": 232,
+				"scale": 0
+			}
+		],
+		"typeProperties": {
+			"schema": "FINALPROJECT_SCHEMA",
+			"table": "COMBINED_DALLAS_DATA"
+		}
+	}
+}

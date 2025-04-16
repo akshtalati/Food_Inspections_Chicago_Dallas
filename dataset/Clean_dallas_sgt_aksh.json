@@ -1,5 +1,5 @@
 {
-	"name": "Parquet_Chicago_clean",
+	"name": "Clean_dallas_sgt_aksh",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "DataLake_AKSH",
@@ -10,38 +10,62 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "Chicago_Clean_Data.parquet",
+				"fileName": "Dallas_Clean.parquet",
 				"fileSystem": "bronze"
 			},
 			"compressionCodec": "snappy"
 		},
 		"schema": [
 			{
-				"name": "InspectionID",
+				"name": "RecordID",
+				"type": "INT32"
+			},
+			{
+				"name": "restaurant_name",
 				"type": "UTF8"
 			},
 			{
-				"name": "DBA_Name",
+				"name": "Inspection Type",
 				"type": "UTF8"
 			},
 			{
-				"name": "AKA_Name",
+				"name": "Inspection Date",
+				"type": "DATE"
+			},
+			{
+				"name": "inspection_score",
+				"type": "INT64"
+			},
+			{
+				"name": "Street Address",
 				"type": "UTF8"
 			},
 			{
-				"name": "License",
+				"name": "Zip Code",
 				"type": "UTF8"
 			},
 			{
-				"name": "Facility_Type",
+				"name": "LatLong",
 				"type": "UTF8"
 			},
 			{
-				"name": "Risk",
+				"name": "Violation_desc",
 				"type": "UTF8"
 			},
 			{
-				"name": "Address",
+				"name": "Description ",
+				"type": "UTF8"
+			},
+			{
+				"name": "Latitude",
+				"type": "UTF8"
+			},
+			{
+				"name": "Longitude",
+				"type": "UTF8"
+			},
+			{
+				"name": "Facality_Type",
 				"type": "UTF8"
 			},
 			{
@@ -53,43 +77,11 @@
 				"type": "UTF8"
 			},
 			{
-				"name": "Zip",
-				"type": "UTF8"
-			},
-			{
-				"name": "Inspection_Date",
-				"type": "DATE"
-			},
-			{
-				"name": "Inspection_Type",
-				"type": "UTF8"
-			},
-			{
 				"name": "Results",
 				"type": "UTF8"
 			},
 			{
-				"name": "Violations",
-				"type": "UTF8"
-			},
-			{
-				"name": "Latitude",
-				"type": "DOUBLE"
-			},
-			{
-				"name": "Longitude",
-				"type": "DOUBLE"
-			},
-			{
-				"name": "Location",
-				"type": "UTF8"
-			},
-			{
-				"name": "Violation_Code",
-				"type": "UTF8"
-			},
-			{
-				"name": "Violation_Description",
+				"name": "Risk",
 				"type": "UTF8"
 			}
 		]
