@@ -172,7 +172,7 @@
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> source5",
 				"source1, source2, source3, source4, source5 union(byName: true)~> union1",
-				"derivedColumn1 foldDown(unroll(),",
+				"derivedColumn1 foldDown(unroll(Violations),",
 				"     mapColumn(",
 				"          {Inspection ID},",
 				"          {DBA Name},",
