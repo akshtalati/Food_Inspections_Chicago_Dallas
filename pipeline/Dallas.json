@@ -3,242 +3,13 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Dallas_Stage",
-				"type": "Copy",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
-				"dependsOn": [],
-				"policy": {
-					"timeout": "0.12:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"source": {
-						"type": "ParquetSource",
-						"storeSettings": {
-							"type": "AzureBlobFSReadSettings",
-							"recursive": true,
-							"enablePartitionDiscovery": false
-						},
-						"formatSettings": {
-							"type": "ParquetReadSettings"
-						}
-					},
-					"sink": {
-						"type": "SnowflakeSink",
-						"importSettings": {
-							"type": "SnowflakeImportCopyCommand"
-						}
-					},
-					"enableStaging": true,
-					"stagingSettings": {
-						"linkedServiceName": {
-							"referenceName": "BlobStorage_AKSH",
-							"type": "LinkedServiceReference"
-						},
-						"path": "bronze"
-					},
-					"translator": {
-						"type": "TabularTranslator",
-						"mappings": [
-							{
-								"source": {
-									"name": "RecordID",
-									"type": "Int32"
-								},
-								"sink": {
-									"name": "RECORDID",
-									"type": "Int64"
-								}
-							},
-							{
-								"source": {
-									"name": "restaurant_name",
-									"type": "String"
-								},
-								"sink": {
-									"name": "RESTAURANT_NAME",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "Inspection Type",
-									"type": "String"
-								},
-								"sink": {
-									"name": "INSPECTION_TYPE",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "Inspection Date",
-									"type": "DateTime"
-								},
-								"sink": {
-									"name": "INSPECTION_DATE",
-									"type": "DateTime"
-								}
-							},
-							{
-								"source": {
-									"name": "inspection_score",
-									"type": "Int64"
-								},
-								"sink": {
-									"name": "INSPECTION_SCORE",
-									"type": "Int64"
-								}
-							},
-							{
-								"source": {
-									"name": "Street Address",
-									"type": "String"
-								},
-								"sink": {
-									"name": "STREET_ADDRESS",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "Zip Code",
-									"type": "String"
-								},
-								"sink": {
-									"name": "ZIP_CODE",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "LatLong",
-									"type": "String"
-								},
-								"sink": {
-									"name": "LATLONG",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "Violation_desc",
-									"type": "String"
-								},
-								"sink": {
-									"name": "VIOLATION_DESC",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "Description ",
-									"type": "String"
-								},
-								"sink": {
-									"name": "DESCRIPTION",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "Latitude",
-									"type": "String"
-								},
-								"sink": {
-									"name": "LATITUDE",
-									"type": "Double"
-								}
-							},
-							{
-								"source": {
-									"name": "Longitude",
-									"type": "String"
-								},
-								"sink": {
-									"name": "LONGITUDE",
-									"type": "Double"
-								}
-							},
-							{
-								"source": {
-									"name": "Facality_Type",
-									"type": "String"
-								},
-								"sink": {
-									"name": "FACILITY_TYPE",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "City",
-									"type": "String"
-								},
-								"sink": {
-									"name": "CITY",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "State",
-									"type": "String"
-								},
-								"sink": {
-									"name": "STATE",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "Results",
-									"type": "String"
-								},
-								"sink": {
-									"name": "RESULTS",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "Risk",
-									"type": "String"
-								},
-								"sink": {
-									"name": "RISK",
-									"type": "String"
-								}
-							}
-						]
-					}
-				},
-				"inputs": [
-					{
-						"referenceName": "Dallas_STAGE",
-						"type": "DatasetReference"
-					}
-				],
-				"outputs": [
-					{
-						"referenceName": "Stage_Dallas",
-						"type": "DatasetReference"
-					}
-				]
-			},
-			{
 				"name": "Dim_Facality",
 				"type": "ExecuteDataFlow",
 				"state": "Inactive",
 				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
-						"activity": "Dallas_Stage",
+						"activity": "Stage_Dallas",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -427,6 +198,90 @@
 						"computeType": "General"
 					},
 					"traceLevel": "Fine"
+				}
+			},
+			{
+				"name": "Stage_Dallas",
+				"type": "Copy",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "ParquetSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "ParquetReadSettings"
+						}
+					},
+					"sink": {
+						"type": "SnowflakeSink",
+						"importSettings": {
+							"type": "SnowflakeImportCopyCommand"
+						}
+					},
+					"enableStaging": true,
+					"stagingSettings": {
+						"linkedServiceName": {
+							"referenceName": "linkedService1",
+							"type": "LinkedServiceReference"
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "stg_dallas_bh_parquet",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Stg_dallas_Bh",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Fact_Dallas",
+				"type": "ExecuteDataFlow",
+				"dependsOn": [
+					{
+						"activity": "DIM_Violation",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataflow": {
+						"referenceName": "Fact_Dallas",
+						"type": "DataFlowReference"
+					},
+					"compute": {
+						"coreCount": 8,
+						"computeType": "General"
+					},
+					"traceLevel": "Coarse"
 				}
 			}
 		],
