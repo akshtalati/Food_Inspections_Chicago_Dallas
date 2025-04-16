@@ -11,7 +11,7 @@
 			"location": {
 				"type": "AzureBlobFSLocation",
 				"fileName": "Chicago_Clean_Data.parquet",
-				"fileSystem": "silver"
+				"fileSystem": "bronze"
 			},
 			"compressionCodec": "snappy"
 		},
