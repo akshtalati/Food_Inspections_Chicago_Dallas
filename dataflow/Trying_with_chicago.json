@@ -40,10 +40,24 @@
 					"name": "source5"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "Chicago_Unioined",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
 			"transformations": [
 				{
 					"name": "union1"
+				},
+				{
+					"name": "flatten1"
+				},
+				{
+					"name": "derivedColumn1"
 				}
 			],
 			"scriptLines": [
@@ -107,7 +121,7 @@
 				"          Results as string,",
 				"          Violations as string,",
 				"          Latitude as string,",
-				"          Longitude as double,",
+				"          Longitude as string,",
 				"          Location as string",
 				"     ),",
 				"     allowSchemaDrift: true,",
@@ -136,12 +150,79 @@
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> source4",
 				"source(output(",
-				"          {Inspection ID     DBA Name     AKA Name     License #     Facility Type     Risk     Address     City     State     Zip     Inspection Date     Inspection Type     Results     Violations     Latitude     Longitude     Location} as string",
+				"          {Inspection ID} as integer,",
+				"          {DBA Name} as string,",
+				"          {AKA Name} as string,",
+				"          {License #} as double,",
+				"          {Facility Type} as string,",
+				"          Risk as string,",
+				"          Address as string,",
+				"          City as string,",
+				"          State as string,",
+				"          Zip as double,",
+				"          {Inspection Date} as date,",
+				"          {Inspection Type} as string,",
+				"          Results as string,",
+				"          Violations as string,",
+				"          Latitude as string,",
+				"          Longitude as string,",
+				"          Location as string",
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> source5",
-				"source1, source2 union(byName: true)~> union1"
+				"source1, source2, source3, source4, source5 union(byName: true)~> union1",
+				"derivedColumn1 foldDown(unroll(),",
+				"     mapColumn(",
+				"          {Inspection ID},",
+				"          {DBA Name},",
+				"          {AKA Name},",
+				"          {License #},",
+				"          {Facility Type},",
+				"          Risk,",
+				"          Address,",
+				"          City,",
+				"          State,",
+				"          Zip,",
+				"          {Inspection Date},",
+				"          {Inspection Type},",
+				"          Results,",
+				"          Violations,",
+				"          Latitude,",
+				"          Longitude,",
+				"          Location",
+				"     ),",
+				"     skipDuplicateMapInputs: false,",
+				"     skipDuplicateMapOutputs: false) ~> flatten1",
+				"union1 derive(Violations = split(Violations,' | ')) ~> derivedColumn1",
+				"flatten1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          ARREST_KEY as string,",
+				"          ARREST_DATE as string,",
+				"          PD_CD as string,",
+				"          PD_DESC as string,",
+				"          KY_CD as string,",
+				"          OFNS_DESC as string,",
+				"          LAW_CODE as string,",
+				"          LAW_CAT_CD as string,",
+				"          ARREST_BORO as string,",
+				"          ARREST_PRECINCT as string,",
+				"          JURISDICTION_CODE as string,",
+				"          AGE_GROUP as string,",
+				"          PERP_SEX as string,",
+				"          PERP_RACE as string,",
+				"          X_COORD_CD as string,",
+				"          Y_COORD_CD as string,",
+				"          Latitude as string,",
+				"          Longitude as string,",
+				"          New_Georeferenced_Column as string",
+				"     ),",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink1"
 			]
 		}
 	}
