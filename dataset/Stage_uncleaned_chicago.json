@@ -1,5 +1,5 @@
 {
-	"name": "Parquet_Chicago_clean",
+	"name": "Stage_uncleaned_chicago",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "DataLake_AKSH",
@@ -10,30 +10,30 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "Chicago_Clean_Data.parquet",
+				"fileName": "Chicago_uncleaned_dataset.parquet",
 				"fileSystem": "bronze"
 			},
 			"compressionCodec": "snappy"
 		},
 		"schema": [
 			{
-				"name": "InspectionID",
+				"name": "Inspection ID",
 				"type": "UTF8"
 			},
 			{
-				"name": "DBA_Name",
+				"name": "DBA Name",
 				"type": "UTF8"
 			},
 			{
-				"name": "AKA_Name",
+				"name": "AKA Name",
 				"type": "UTF8"
 			},
 			{
-				"name": "License",
+				"name": "License #",
 				"type": "UTF8"
 			},
 			{
-				"name": "Facility_Type",
+				"name": "Facility Type",
 				"type": "UTF8"
 			},
 			{
@@ -57,11 +57,11 @@
 				"type": "UTF8"
 			},
 			{
-				"name": "Inspection_Date",
-				"type": "DATE"
+				"name": "Inspection Date",
+				"type": "UTF8"
 			},
 			{
-				"name": "Inspection_Type",
+				"name": "Inspection Type",
 				"type": "UTF8"
 			},
 			{
@@ -74,22 +74,14 @@
 			},
 			{
 				"name": "Latitude",
-				"type": "DOUBLE"
+				"type": "UTF8"
 			},
 			{
 				"name": "Longitude",
-				"type": "DOUBLE"
+				"type": "UTF8"
 			},
 			{
 				"name": "Location",
-				"type": "UTF8"
-			},
-			{
-				"name": "Violation_Code",
-				"type": "UTF8"
-			},
-			{
-				"name": "Violation_Description",
 				"type": "UTF8"
 			}
 		]

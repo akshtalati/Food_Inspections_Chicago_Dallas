@@ -1,5 +1,5 @@
 {
-	"name": "Fact",
+	"name": "Fact_chicago",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "Snowflake_AKSH",
@@ -69,15 +69,21 @@
 				"scale": 0
 			},
 			{
-				"name": "CITY_NAME",
+				"name": "SOURCE_NAME",
 				"type": "VARCHAR",
 				"precision": 50,
+				"scale": 0
+			},
+			{
+				"name": "DI_CREATED_DT",
+				"type": "DATE",
+				"precision": 10,
 				"scale": 0
 			}
 		],
 		"typeProperties": {
 			"schema": "FINALPROJECT_SCHEMA",
-			"table": "FCT_CHICAGO_DALLAS"
+			"table": "FCT_INSPECTION"
 		}
 	}
 }

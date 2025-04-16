@@ -13,6 +13,12 @@
 						"dependencyConditions": [
 							"Succeeded"
 						]
+					},
+					{
+						"activity": "Stage_clean_dallas",
+						"dependencyConditions": [
+							"Succeeded"
+						]
 					}
 				],
 				"policy": {
@@ -256,6 +262,8 @@
 			{
 				"name": "Fact_Dallas",
 				"type": "ExecuteDataFlow",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "DIM_Violation",
@@ -283,6 +291,58 @@
 					},
 					"traceLevel": "Coarse"
 				}
+			},
+			{
+				"name": "Stage_clean_dallas",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "ParquetSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "ParquetReadSettings"
+						}
+					},
+					"sink": {
+						"type": "SnowflakeSink",
+						"importSettings": {
+							"type": "SnowflakeImportCopyCommand"
+						}
+					},
+					"enableStaging": true,
+					"stagingSettings": {
+						"linkedServiceName": {
+							"referenceName": "BlobStorage_AKSH",
+							"type": "LinkedServiceReference"
+						},
+						"path": "bronze"
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "Clean_dallas_sgt_aksh",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "stg_dallas_new_aksh",
+						"type": "DatasetReference"
+					}
+				]
 			}
 		],
 		"annotations": []
