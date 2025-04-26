@@ -1,0 +1,776 @@
+<?xml version="1.0"?>
+<AlteryxDocument yxmdVer="2024.2" RunE2="T">
+  <Nodes>
+    <Node ToolID="1">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+        <Position x="42" y="18" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Passwords />
+          <File RecordLimit="" SearchSubDirs="False" FileFormat="0" OutputFileName="">C:\Users\DELL\Desktop\Fin\Chicago_2021-2022.tsv</File>
+          <FormatSpecificOptions>
+            <HeaderRow>True</HeaderRow>
+            <IgnoreErrors>False</IgnoreErrors>
+            <AllowShareWrite>False</AllowShareWrite>
+            <ImportLine>1</ImportLine>
+            <FieldLen>254</FieldLen>
+            <SingleThreadRead>False</SingleThreadRead>
+            <IgnoreQuotes>DoubleQuotes</IgnoreQuotes>
+            <Delimeter>\t</Delimeter>
+            <QuoteRecordBreak>False</QuoteRecordBreak>
+            <CodePage>28591</CodePage>
+          </FormatSpecificOptions>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>Chicago_2021-2022.tsv</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+        <Dependencies>
+          <Implicit />
+        </Dependencies>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="Inspection ID" size="254" source="File: C:\Users\DELL\Desktop\Fin\Chicago_2021-2022.tsv" type="V_String" />
+            <Field name="DBA Name" size="254" source="File: C:\Users\DELL\Desktop\Fin\Chicago_2021-2022.tsv" type="V_String" />
+            <Field name="AKA Name" size="254" source="File: C:\Users\DELL\Desktop\Fin\Chicago_2021-2022.tsv" type="V_String" />
+            <Field name="License #" size="254" source="File: C:\Users\DELL\Desktop\Fin\Chicago_2021-2022.tsv" type="V_String" />
+            <Field name="Facility Type" size="254" source="File: C:\Users\DELL\Desktop\Fin\Chicago_2021-2022.tsv" type="V_String" />
+            <Field name="Risk" size="254" source="File: C:\Users\DELL\Desktop\Fin\Chicago_2021-2022.tsv" type="V_String" />
+            <Field name="Address" size="254" source="File: C:\Users\DELL\Desktop\Fin\Chicago_2021-2022.tsv" type="V_String" />
+            <Field name="City" size="254" source="File: C:\Users\DELL\Desktop\Fin\Chicago_2021-2022.tsv" type="V_String" />
+            <Field name="State" size="254" source="File: C:\Users\DELL\Desktop\Fin\Chicago_2021-2022.tsv" type="V_String" />
+            <Field name="Zip" size="254" source="File: C:\Users\DELL\Desktop\Fin\Chicago_2021-2022.tsv" type="V_String" />
+            <Field name="Inspection Date" size="254" source="File: C:\Users\DELL\Desktop\Fin\Chicago_2021-2022.tsv" type="V_String" />
+            <Field name="Inspection Type" size="254" source="File: C:\Users\DELL\Desktop\Fin\Chicago_2021-2022.tsv" type="V_String" />
+            <Field name="Results" size="254" source="File: C:\Users\DELL\Desktop\Fin\Chicago_2021-2022.tsv" type="V_String" />
+            <Field name="Violations" size="254" source="File: C:\Users\DELL\Desktop\Fin\Chicago_2021-2022.tsv" type="V_String" />
+            <Field name="Latitude" size="254" source="File: C:\Users\DELL\Desktop\Fin\Chicago_2021-2022.tsv" type="V_String" />
+            <Field name="Longitude" size="254" source="File: C:\Users\DELL\Desktop\Fin\Chicago_2021-2022.tsv" type="V_String" />
+            <Field name="Location" size="254" source="File: C:\Users\DELL\Desktop\Fin\Chicago_2021-2022.tsv" type="V_String" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+    </Node>
+    <Node ToolID="2">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+        <Position x="42" y="114" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Passwords />
+          <File RecordLimit="" SearchSubDirs="False" FileFormat="0" OutputFileName="">C:\Users\DELL\Desktop\Fin\Chicago_2022-2023.tsv</File>
+          <FormatSpecificOptions>
+            <HeaderRow>True</HeaderRow>
+            <IgnoreErrors>False</IgnoreErrors>
+            <AllowShareWrite>False</AllowShareWrite>
+            <ImportLine>1</ImportLine>
+            <FieldLen>254</FieldLen>
+            <SingleThreadRead>False</SingleThreadRead>
+            <IgnoreQuotes>DoubleQuotes</IgnoreQuotes>
+            <Delimeter>\t</Delimeter>
+            <QuoteRecordBreak>False</QuoteRecordBreak>
+            <CodePage>28591</CodePage>
+          </FormatSpecificOptions>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>Chicago_2022-2023.tsv</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+        <Dependencies>
+          <Implicit />
+        </Dependencies>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="Inspection ID" size="254" source="File: C:\Users\DELL\Desktop\Fin\Chicago_2022-2023.tsv" type="V_String" />
+            <Field name="DBA Name" size="254" source="File: C:\Users\DELL\Desktop\Fin\Chicago_2022-2023.tsv" type="V_String" />
+            <Field name="AKA Name" size="254" source="File: C:\Users\DELL\Desktop\Fin\Chicago_2022-2023.tsv" type="V_String" />
+            <Field name="License #" size="254" source="File: C:\Users\DELL\Desktop\Fin\Chicago_2022-2023.tsv" type="V_String" />
+            <Field name="Facility Type" size="254" source="File: C:\Users\DELL\Desktop\Fin\Chicago_2022-2023.tsv" type="V_String" />
+            <Field name="Risk" size="254" source="File: C:\Users\DELL\Desktop\Fin\Chicago_2022-2023.tsv" type="V_String" />
+            <Field name="Address" size="254" source="File: C:\Users\DELL\Desktop\Fin\Chicago_2022-2023.tsv" type="V_String" />
+            <Field name="City" size="254" source="File: C:\Users\DELL\Desktop\Fin\Chicago_2022-2023.tsv" type="V_String" />
+            <Field name="State" size="254" source="File: C:\Users\DELL\Desktop\Fin\Chicago_2022-2023.tsv" type="V_String" />
+            <Field name="Zip" size="254" source="File: C:\Users\DELL\Desktop\Fin\Chicago_2022-2023.tsv" type="V_String" />
+            <Field name="Inspection Date" size="254" source="File: C:\Users\DELL\Desktop\Fin\Chicago_2022-2023.tsv" type="V_String" />
+            <Field name="Inspection Type" size="254" source="File: C:\Users\DELL\Desktop\Fin\Chicago_2022-2023.tsv" type="V_String" />
+            <Field name="Results" size="254" source="File: C:\Users\DELL\Desktop\Fin\Chicago_2022-2023.tsv" type="V_String" />
+            <Field name="Violations" size="254" source="File: C:\Users\DELL\Desktop\Fin\Chicago_2022-2023.tsv" type="V_String" />
+            <Field name="Latitude" size="254" source="File: C:\Users\DELL\Desktop\Fin\Chicago_2022-2023.tsv" type="V_String" />
+            <Field name="Longitude" size="254" source="File: C:\Users\DELL\Desktop\Fin\Chicago_2022-2023.tsv" type="V_String" />
+            <Field name="Location" size="254" source="File: C:\Users\DELL\Desktop\Fin\Chicago_2022-2023.tsv" type="V_String" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+    </Node>
+    <Node ToolID="4">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+        <Position x="54" y="234" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Passwords />
+          <File RecordLimit="" SearchSubDirs="False" FileFormat="0" OutputFileName="">C:\Users\DELL\Desktop\Fin\Chicago_2023-2024.tsv</File>
+          <FormatSpecificOptions>
+            <HeaderRow>True</HeaderRow>
+            <IgnoreErrors>False</IgnoreErrors>
+            <AllowShareWrite>False</AllowShareWrite>
+            <ImportLine>1</ImportLine>
+            <FieldLen>254</FieldLen>
+            <SingleThreadRead>False</SingleThreadRead>
+            <IgnoreQuotes>DoubleQuotes</IgnoreQuotes>
+            <Delimeter>\t</Delimeter>
+            <QuoteRecordBreak>False</QuoteRecordBreak>
+            <CodePage>28591</CodePage>
+          </FormatSpecificOptions>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>Chicago_2023-2024.tsv</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+        <Dependencies>
+          <Implicit />
+        </Dependencies>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="Inspection ID" size="254" source="File: C:\Users\DELL\Desktop\Fin\Chicago_2023-2024.tsv" type="V_String" />
+            <Field name="DBA Name" size="254" source="File: C:\Users\DELL\Desktop\Fin\Chicago_2023-2024.tsv" type="V_String" />
+            <Field name="AKA Name" size="254" source="File: C:\Users\DELL\Desktop\Fin\Chicago_2023-2024.tsv" type="V_String" />
+            <Field name="License #" size="254" source="File: C:\Users\DELL\Desktop\Fin\Chicago_2023-2024.tsv" type="V_String" />
+            <Field name="Facility Type" size="254" source="File: C:\Users\DELL\Desktop\Fin\Chicago_2023-2024.tsv" type="V_String" />
+            <Field name="Risk" size="254" source="File: C:\Users\DELL\Desktop\Fin\Chicago_2023-2024.tsv" type="V_String" />
+            <Field name="Address" size="254" source="File: C:\Users\DELL\Desktop\Fin\Chicago_2023-2024.tsv" type="V_String" />
+            <Field name="City" size="254" source="File: C:\Users\DELL\Desktop\Fin\Chicago_2023-2024.tsv" type="V_String" />
+            <Field name="State" size="254" source="File: C:\Users\DELL\Desktop\Fin\Chicago_2023-2024.tsv" type="V_String" />
+            <Field name="Zip" size="254" source="File: C:\Users\DELL\Desktop\Fin\Chicago_2023-2024.tsv" type="V_String" />
+            <Field name="Inspection Date" size="254" source="File: C:\Users\DELL\Desktop\Fin\Chicago_2023-2024.tsv" type="V_String" />
+            <Field name="Inspection Type" size="254" source="File: C:\Users\DELL\Desktop\Fin\Chicago_2023-2024.tsv" type="V_String" />
+            <Field name="Results" size="254" source="File: C:\Users\DELL\Desktop\Fin\Chicago_2023-2024.tsv" type="V_String" />
+            <Field name="Violations" size="254" source="File: C:\Users\DELL\Desktop\Fin\Chicago_2023-2024.tsv" type="V_String" />
+            <Field name="Latitude" size="254" source="File: C:\Users\DELL\Desktop\Fin\Chicago_2023-2024.tsv" type="V_String" />
+            <Field name="Longitude" size="254" source="File: C:\Users\DELL\Desktop\Fin\Chicago_2023-2024.tsv" type="V_String" />
+            <Field name="Location" size="254" source="File: C:\Users\DELL\Desktop\Fin\Chicago_2023-2024.tsv" type="V_String" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+    </Node>
+    <Node ToolID="5">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+        <Position x="54" y="330" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Passwords />
+          <File RecordLimit="" SearchSubDirs="False" FileFormat="0" OutputFileName="">C:\Users\DELL\Desktop\Fin\Chicago_2024-2025.tsv</File>
+          <FormatSpecificOptions>
+            <HeaderRow>True</HeaderRow>
+            <IgnoreErrors>False</IgnoreErrors>
+            <AllowShareWrite>False</AllowShareWrite>
+            <ImportLine>1</ImportLine>
+            <FieldLen>254</FieldLen>
+            <SingleThreadRead>False</SingleThreadRead>
+            <IgnoreQuotes>DoubleQuotes</IgnoreQuotes>
+            <Delimeter>\t</Delimeter>
+            <QuoteRecordBreak>False</QuoteRecordBreak>
+            <CodePage>28591</CodePage>
+          </FormatSpecificOptions>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>Chicago_2024-2025.tsv</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+        <Dependencies>
+          <Implicit />
+        </Dependencies>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="Inspection ID" size="254" source="File: C:\Users\DELL\Desktop\Fin\Chicago_2024-2025.tsv" type="V_String" />
+            <Field name="DBA Name" size="254" source="File: C:\Users\DELL\Desktop\Fin\Chicago_2024-2025.tsv" type="V_String" />
+            <Field name="AKA Name" size="254" source="File: C:\Users\DELL\Desktop\Fin\Chicago_2024-2025.tsv" type="V_String" />
+            <Field name="License #" size="254" source="File: C:\Users\DELL\Desktop\Fin\Chicago_2024-2025.tsv" type="V_String" />
+            <Field name="Facility Type" size="254" source="File: C:\Users\DELL\Desktop\Fin\Chicago_2024-2025.tsv" type="V_String" />
+            <Field name="Risk" size="254" source="File: C:\Users\DELL\Desktop\Fin\Chicago_2024-2025.tsv" type="V_String" />
+            <Field name="Address" size="254" source="File: C:\Users\DELL\Desktop\Fin\Chicago_2024-2025.tsv" type="V_String" />
+            <Field name="City" size="254" source="File: C:\Users\DELL\Desktop\Fin\Chicago_2024-2025.tsv" type="V_String" />
+            <Field name="State" size="254" source="File: C:\Users\DELL\Desktop\Fin\Chicago_2024-2025.tsv" type="V_String" />
+            <Field name="Zip" size="254" source="File: C:\Users\DELL\Desktop\Fin\Chicago_2024-2025.tsv" type="V_String" />
+            <Field name="Inspection Date" size="254" source="File: C:\Users\DELL\Desktop\Fin\Chicago_2024-2025.tsv" type="V_String" />
+            <Field name="Inspection Type" size="254" source="File: C:\Users\DELL\Desktop\Fin\Chicago_2024-2025.tsv" type="V_String" />
+            <Field name="Results" size="254" source="File: C:\Users\DELL\Desktop\Fin\Chicago_2024-2025.tsv" type="V_String" />
+            <Field name="Violations" size="254" source="File: C:\Users\DELL\Desktop\Fin\Chicago_2024-2025.tsv" type="V_String" />
+            <Field name="Latitude" size="254" source="File: C:\Users\DELL\Desktop\Fin\Chicago_2024-2025.tsv" type="V_String" />
+            <Field name="Longitude" size="254" source="File: C:\Users\DELL\Desktop\Fin\Chicago_2024-2025.tsv" type="V_String" />
+            <Field name="Location" size="254" source="File: C:\Users\DELL\Desktop\Fin\Chicago_2024-2025.tsv" type="V_String" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+    </Node>
+    <Node ToolID="6">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+        <Position x="54" y="450" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Passwords />
+          <File RecordLimit="" SearchSubDirs="False" FileFormat="0" OutputFileName="">C:\Users\DELL\Desktop\Fin\Chicago_2025-present.tsv</File>
+          <FormatSpecificOptions>
+            <HeaderRow>True</HeaderRow>
+            <IgnoreErrors>False</IgnoreErrors>
+            <AllowShareWrite>False</AllowShareWrite>
+            <ImportLine>1</ImportLine>
+            <FieldLen>254</FieldLen>
+            <SingleThreadRead>False</SingleThreadRead>
+            <IgnoreQuotes>DoubleQuotes</IgnoreQuotes>
+            <Delimeter>\t</Delimeter>
+            <QuoteRecordBreak>False</QuoteRecordBreak>
+            <CodePage>28591</CodePage>
+          </FormatSpecificOptions>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>Chicago_2025-present.tsv</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+        <Dependencies>
+          <Implicit />
+        </Dependencies>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="Inspection ID" size="254" source="File: C:\Users\DELL\Desktop\Fin\Chicago_2025-present.tsv" type="V_String" />
+            <Field name="DBA Name" size="254" source="File: C:\Users\DELL\Desktop\Fin\Chicago_2025-present.tsv" type="V_String" />
+            <Field name="AKA Name" size="254" source="File: C:\Users\DELL\Desktop\Fin\Chicago_2025-present.tsv" type="V_String" />
+            <Field name="License #" size="254" source="File: C:\Users\DELL\Desktop\Fin\Chicago_2025-present.tsv" type="V_String" />
+            <Field name="Facility Type" size="254" source="File: C:\Users\DELL\Desktop\Fin\Chicago_2025-present.tsv" type="V_String" />
+            <Field name="Risk" size="254" source="File: C:\Users\DELL\Desktop\Fin\Chicago_2025-present.tsv" type="V_String" />
+            <Field name="Address" size="254" source="File: C:\Users\DELL\Desktop\Fin\Chicago_2025-present.tsv" type="V_String" />
+            <Field name="City" size="254" source="File: C:\Users\DELL\Desktop\Fin\Chicago_2025-present.tsv" type="V_String" />
+            <Field name="State" size="254" source="File: C:\Users\DELL\Desktop\Fin\Chicago_2025-present.tsv" type="V_String" />
+            <Field name="Zip" size="254" source="File: C:\Users\DELL\Desktop\Fin\Chicago_2025-present.tsv" type="V_String" />
+            <Field name="Inspection Date" size="254" source="File: C:\Users\DELL\Desktop\Fin\Chicago_2025-present.tsv" type="V_String" />
+            <Field name="Inspection Type" size="254" source="File: C:\Users\DELL\Desktop\Fin\Chicago_2025-present.tsv" type="V_String" />
+            <Field name="Results" size="254" source="File: C:\Users\DELL\Desktop\Fin\Chicago_2025-present.tsv" type="V_String" />
+            <Field name="Violations" size="254" source="File: C:\Users\DELL\Desktop\Fin\Chicago_2025-present.tsv" type="V_String" />
+            <Field name="Latitude" size="254" source="File: C:\Users\DELL\Desktop\Fin\Chicago_2025-present.tsv" type="V_String" />
+            <Field name="Longitude" size="254" source="File: C:\Users\DELL\Desktop\Fin\Chicago_2025-present.tsv" type="V_String" />
+            <Field name="Location" size="254" source="File: C:\Users\DELL\Desktop\Fin\Chicago_2025-present.tsv" type="V_String" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+    </Node>
+    <Node ToolID="7">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Union.Union">
+        <Position x="234" y="222" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <ByName_ErrorMode>Warning</ByName_ErrorMode>
+          <ByName_OutputMode>All</ByName_OutputMode>
+          <Mode>ByName</Mode>
+          <SetOutputOrder value="False" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxUnion" />
+    </Node>
+    <Node ToolID="9">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
+        <Position x="294" y="114" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <TempFile>C:\Users\DELL\AppData\Local\Temp\Alteryx\Engine_17928_e78198b58df644899ec1b72858096991_\Engine_17928_8ce34acfbfdd4a9ea1325b0b06c36fda~.yxdb</TempFile>
+          <TempFileDataProfiling />
+          <Layout>
+            <ViewMode>Single</ViewMode>
+            <ViewSize value="100" />
+            <View1>
+              <DefaultTab>Profile</DefaultTab>
+              <Hints>
+                <Table />
+              </Hints>
+            </View1>
+            <View2 />
+          </Layout>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxBrowseV2" />
+    </Node>
+    <Node ToolID="10">
+      <GuiSettings>
+        <Position x="318" y="222" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Value name="Check Box (135)">False</Value>
+          <Value name="Check Box (136)">False</Value>
+          <Value name="List Box (11)">"Inspection ID","DBA Name","AKA Name","License #","Facility Type","Risk","Address","City","State","Zip","Inspection Date","Inspection Type","Results","Violations","Latitude","Longitude","Location"</Value>
+          <Value name="Check Box (84)">True</Value>
+          <Value name="Check Box (117)">True</Value>
+          <Value name="Check Box (15)">True</Value>
+          <Value name="Check Box (109)">False</Value>
+          <Value name="Check Box (122)">False</Value>
+          <Value name="Check Box (53)">False</Value>
+          <Value name="Check Box (58)">False</Value>
+          <Value name="Check Box (70)">False</Value>
+          <Value name="Check Box (77)">False</Value>
+          <Value name="Drop Down (81)">upper</Value>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+        <Dependencies>
+          <Implicit />
+        </Dependencies>
+      </Properties>
+      <EngineSettings Macro="Cleanse.yxmc" />
+    </Node>
+    <Node ToolID="11">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+        <Position x="426" y="222" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <OrderChanged value="False" />
+          <CommaDecimal value="False" />
+          <SelectFields>
+            <SelectField field="Inspection ID" selected="True" rename="InspectionID" />
+            <SelectField field="DBA Name" selected="True" rename="DBA_Name" />
+            <SelectField field="AKA Name" selected="True" rename="AKA_Name" />
+            <SelectField field="License #" selected="True" rename="License" />
+            <SelectField field="Facility Type" selected="True" rename="Facility_Type" />
+            <SelectField field="Inspection Date" selected="True" rename="Inspection_Date" type="Date" size="10" />
+            <SelectField field="Inspection Type" selected="True" rename="Inspection_Type" />
+            <SelectField field="Latitude" selected="True" type="Double" size="8" />
+            <SelectField field="Longitude" selected="True" type="Double" size="8" />
+            <SelectField field="*Unknown" selected="True" />
+          </SelectFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+    </Node>
+    <Node ToolID="12">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
+        <Position x="546" y="114" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <TempFile>C:\Users\DELL\AppData\Local\Temp\Alteryx\Engine_17928_e78198b58df644899ec1b72858096991_\Engine_17928_1ecc0ad0493949c2abc7e0c3e9737bb5~.yxdb</TempFile>
+          <TempFileDataProfiling />
+          <Layout>
+            <ViewMode>Single</ViewMode>
+            <ViewSize value="100" />
+            <View1>
+              <DefaultTab>Profile</DefaultTab>
+              <Hints>
+                <Table />
+              </Hints>
+            </View1>
+            <View2 />
+          </Layout>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxBrowseV2" />
+    </Node>
+    <Node ToolID="13">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
+        <Position x="558" y="222" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <FormulaFields>
+            <FormulaField expression="IF ISNULL([Zip]) THEN &quot;Unknown&quot;&#xA;ELSE Replace(ToString([Zip]), &quot;.0&quot;, &quot;&quot;)&#xA;ENDIF" field="Zip" size="254" type="V_String" enabled="true" />
+            <FormulaField expression="IF ISNULL([City]) THEN &quot;Unknown&quot;&#xA;ELSEIF UPPERCASE([City]) IN (&quot;CCHICAGO&quot;, &quot;CHCAGO&quot;, &quot;CHICAG&quot;, &quot;CHICAGO &quot;, &quot;CHICAGO.&quot;) THEN &quot;CHICAGO&quot;&#xA;ELSE UPPERCASE([City])&#xA;ENDIF" field="City" size="254" type="V_String" enabled="true" />
+            <FormulaField expression="IF ISNULL([State]) THEN &quot;Unknown&quot;&#xA;ELSEIF [State] != &quot;IL&quot; THEN &quot;IL&quot;&#xA;ELSE [State]&#xA;ENDIF" field="State" size="254" type="V_String" enabled="true" />
+            <FormulaField expression="IF ISNULL([Inspection_Date]) THEN &quot;Unknown&quot;&#xA;ELSE ToDate(DateTimeYear([Inspection_Date]))&#xA;ENDIF" field="Inspection_Date" size="10" type="Date" enabled="true" />
+            <FormulaField expression="IF ISNULL([Results]) THEN &quot;Unknown&quot;&#xA;ELSEIF Contains([Results], &quot;Fail&quot;) THEN &quot;Fail&quot;&#xA;ELSEIF Contains([Results], &quot;Pass&quot;) AND Contains([Results], &quot;Conditions&quot;) THEN &quot;Pass w/ Conditions&quot;&#xA;ELSEIF Contains([Results], &quot;Pass&quot;) THEN &quot;Pass&quot;&#xA;ELSE [Results]&#xA;ENDIF" field="Results" size="254" type="V_String" enabled="true" />
+            <FormulaField expression="IF ISNULL([Facility_Type]) THEN &quot;Unknown&quot; ELSE [Facility_Type] ENDIF" field="Facility_Type" size="254" type="V_String" enabled="true" />
+            <FormulaField expression="IF ISNULL([Risk]) THEN &quot;Risk 0 (Not Defined)&quot; ELSE [Risk] ENDIF" field="Risk" size="254" type="V_String" enabled="true" />
+            <FormulaField expression="Trim([Violations])" field="Violations" size="254" type="V_String" enabled="true" />
+          </FormulaFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>Zip = IF ISNULL([Zip]) THEN "Unknown"
+ELSE Replace(ToString([Zip]), ".0", "")
+EN...</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
+    </Node>
+    <Node ToolID="14">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
+        <Position x="666" y="186" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <TempFile>C:\Users\DELL\AppData\Local\Temp\Alteryx\Engine_17928_e78198b58df644899ec1b72858096991_\Engine_17928_c6278d27f76c4fc6bad59c0268da9dce~.yxdb</TempFile>
+          <TempFileDataProfiling />
+          <Layout>
+            <ViewMode>Single</ViewMode>
+            <ViewSize value="100" />
+            <View1>
+              <DefaultTab>Profile</DefaultTab>
+              <Hints>
+                <Table />
+              </Hints>
+            </View1>
+            <View2 />
+          </Layout>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxBrowseV2" />
+    </Node>
+    <Node ToolID="15">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.RegEx.RegEx">
+        <Position x="702" y="222" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Field>Violations</Field>
+          <RegExExpression value="^\s*(\d+)[\.\-]?\s*(.+)" />
+          <CaseInsensitve value="True" />
+          <Method>ParseComplex</Method>
+          <Replace expression="">
+            <CopyUnmatched value="True" />
+          </Replace>
+          <ParseSimple>
+            <SplitToRows value="False" />
+            <RootName>Violations</RootName>
+            <NumFields value="3" />
+            <ErrorHandling>Warn</ErrorHandling>
+          </ParseSimple>
+          <ParseComplex>
+            <Field field="Violation_Code" type="V_String" size="254" />
+            <Field field="Violation_Description" type="V_String" size="254" />
+          </ParseComplex>
+          <Match>
+            <Field>InspectionID_Matched</Field>
+            <ErrorUnmatched value="False" />
+          </Match>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxRegEx" />
+    </Node>
+    <Node ToolID="16">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+        <Position x="798" y="222" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <OrderChanged value="False" />
+          <CommaDecimal value="False" />
+          <SelectFields>
+            <SelectField field="*Unknown" selected="True" />
+          </SelectFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+    </Node>
+    <Node ToolID="17">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
+        <Position x="882" y="186" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <TempFile>C:\Users\DELL\AppData\Local\Temp\Alteryx\Engine_17928_e78198b58df644899ec1b72858096991_\Engine_17928_7e7a24031a2e41539a15721cb4127e8a~.yxdb</TempFile>
+          <TempFileDataProfiling />
+          <Layout>
+            <ViewMode>Single</ViewMode>
+            <ViewSize value="100" />
+            <View1>
+              <DefaultTab>Profile</DefaultTab>
+              <Hints>
+                <Table />
+              </Hints>
+            </View1>
+            <View2 />
+          </Layout>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxBrowseV2" />
+    </Node>
+    <Node ToolID="18">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
+        <Position x="906" y="234" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <FormulaFields>
+            <FormulaField expression="IF ISNULL([Violation_Code]) THEN &quot;UNKNOWN&quot; ELSE [Violation_Code] ENDIF" field="Violation_Code" size="254" type="V_String" enabled="true" />
+            <FormulaField expression="IF ISNULL([Violation_Description]) THEN &quot;UNKNOWN&quot; ELSE [Violation_Description] ENDIF" field="Violation_Description" size="254" type="V_String" enabled="true" />
+            <FormulaField expression="IF ISNULL([Location]) THEN &quot;UNKNOWN&quot; ELSE [Location] ENDIF" field="Location" size="254" type="V_String" enabled="true" />
+            <FormulaField expression="IF ISNULL([AKA_Name]) THEN &quot;UNKNOWN&quot; ELSE [AKA_Name] ENDIF" field="AKA_Name" size="254" type="V_String" enabled="true" />
+            <FormulaField expression="IF ISNULL([License]) THEN &quot;UNKNOWN&quot; ELSE [License] ENDIF" field="License" size="254" type="V_String" enabled="true" />
+            <FormulaField expression="IF ISNULL([Facility_Type]) THEN &quot;UNKNOWN&quot; ELSE [Facility_Type] ENDIF" field="Facility_Type" size="254" type="V_String" enabled="true" />
+            <FormulaField expression="IF ISNULL([Risk]) THEN &quot;Risk 0 (Not Defined)&quot; ELSE [Risk] ENDIF" field="Risk" size="254" type="V_String" enabled="true" />
+            <FormulaField expression="IF ISNULL([Address]) THEN &quot;UNKNOWN&quot; ELSE [Address] ENDIF" field="Address" size="254" type="V_String" enabled="true" />
+            <FormulaField expression="IF ISNULL([City]) THEN &quot;UNKNOWN&quot; ELSE [City] ENDIF" field="City" size="254" type="V_String" enabled="true" />
+            <FormulaField expression="IF ISNULL([State]) THEN &quot;UNKNOWN&quot; ELSE [State] ENDIF" field="State" size="254" type="V_String" enabled="true" />
+            <FormulaField expression="IF ISNULL([Zip]) THEN &quot;UNKNOWN&quot; ELSE [Zip] ENDIF" field="Zip" size="254" type="V_String" enabled="true" />
+            <FormulaField expression="IF ISNULL([Inspection_Type]) THEN &quot;UNKNOWN&quot; ELSE [Inspection_Type] ENDIF" field="Inspection_Type" size="254" type="V_String" enabled="true" />
+            <FormulaField expression="IF ISNULL([Results]) THEN &quot;UNKNOWN&quot; ELSE [Results] ENDIF" field="Results" size="254" type="V_String" enabled="true" />
+          </FormulaFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>Violation_Code = IF ISNULL([Violation_Code]) THEN "UNKNOWN" ELSE [Violation_Code...</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
+    </Node>
+    <Node ToolID="19">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
+        <Position x="1002" y="186" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <TempFile>C:\Users\DELL\AppData\Local\Temp\Alteryx\Engine_17928_e78198b58df644899ec1b72858096991_\Engine_17928_6a75289371cc4bbe900ad9aaa4043eff~.yxdb</TempFile>
+          <TempFileDataProfiling />
+          <Layout>
+            <ViewMode>Single</ViewMode>
+            <ViewSize value="100" />
+            <View1>
+              <DefaultTab>Profile</DefaultTab>
+              <Hints>
+                <Table />
+              </Hints>
+            </View1>
+            <View2 />
+          </Layout>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxBrowseV2" />
+    </Node>
+    <Node ToolID="20">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
+        <Position x="1038" y="234" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <File MaxRecords="" FileFormat="79">C:\Users\DELL\Desktop\Fin\Chicago_Clean_Data.parquet</File>
+          <Passwords />
+          <Disable>False</Disable>
+          <FormatSpecificOptions />
+          <MultiFile value="False" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>Chicago_Clean_Data.parquet</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+        <Dependencies>
+          <Implicit />
+        </Dependencies>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
+    </Node>
+    <Node ToolID="21">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
+        <Position x="1026" y="306" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <File MaxRecords="" FileFormat="0">C:\Users\DELL\Desktop\Fin\So_try.csv</File>
+          <Passwords />
+          <Disable>False</Disable>
+          <FormatSpecificOptions>
+            <LineEndStyle>CRLF</LineEndStyle>
+            <Delimeter>,</Delimeter>
+            <ForceQuotes>False</ForceQuotes>
+            <HeaderRow>True</HeaderRow>
+            <CodePage>28591</CodePage>
+            <WriteBOM>True</WriteBOM>
+          </FormatSpecificOptions>
+          <MultiFile value="False" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>So_try.csv</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+        <Dependencies>
+          <Implicit />
+        </Dependencies>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
+    </Node>
+  </Nodes>
+  <Connections>
+    <Connection name="#1">
+      <Origin ToolID="1" Connection="Output" />
+      <Destination ToolID="7" Connection="Input" />
+    </Connection>
+    <Connection name="#2">
+      <Origin ToolID="2" Connection="Output" />
+      <Destination ToolID="7" Connection="Input" />
+    </Connection>
+    <Connection name="#3">
+      <Origin ToolID="4" Connection="Output" />
+      <Destination ToolID="7" Connection="Input" />
+    </Connection>
+    <Connection name="#4">
+      <Origin ToolID="5" Connection="Output" />
+      <Destination ToolID="7" Connection="Input" />
+    </Connection>
+    <Connection name="#5">
+      <Origin ToolID="6" Connection="Output" />
+      <Destination ToolID="7" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="7" Connection="Output" />
+      <Destination ToolID="9" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="7" Connection="Output" />
+      <Destination ToolID="10" Connection="Input2" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="10" Connection="Output26" />
+      <Destination ToolID="11" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="11" Connection="Output" />
+      <Destination ToolID="12" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="11" Connection="Output" />
+      <Destination ToolID="13" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="13" Connection="Output" />
+      <Destination ToolID="14" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="13" Connection="Output" />
+      <Destination ToolID="15" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="15" Connection="Output" />
+      <Destination ToolID="16" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="16" Connection="Output" />
+      <Destination ToolID="17" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="16" Connection="Output" />
+      <Destination ToolID="18" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="18" Connection="Output" />
+      <Destination ToolID="19" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="18" Connection="Output" />
+      <Destination ToolID="20" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="18" Connection="Output" />
+      <Destination ToolID="21" Connection="Input" />
+    </Connection>
+  </Connections>
+  <Properties>
+    <Memory default="True" />
+    <GlobalRecordLimit value="0" />
+    <TempFiles default="True" />
+    <Annotation on="True" includeToolName="False" />
+    <ConvErrorLimit value="10" />
+    <ConvErrorLimit_Stop value="False" />
+    <CancelOnError value="False" />
+    <DisableBrowse value="False" />
+    <EnablePerformanceProfiling value="False" />
+    <RunWithE2 value="True" />
+    <PredictiveToolsCodePage value="1252" />
+    <DisableAllOutput value="False" />
+    <ShowAllMacroMessages value="False" />
+    <ShowConnectionStatusIsOn value="True" />
+    <ShowConnectionStatusOnlyWhenRunning value="True" />
+    <ZoomLevel value="0" />
+    <LayoutType>Horizontal</LayoutType>
+    <IsTemplate value="False" />
+    <MetaInfo>
+      <NameIsFileName value="True" />
+      <Name>Chicago_Altryex</Name>
+      <Description />
+      <RootToolName />
+      <ToolVersion />
+      <ToolInDb value="False" />
+      <CategoryName />
+      <SearchTags />
+      <Author />
+      <Company />
+      <Copyright />
+      <DescriptionLink actual="" displayed="" />
+      <Example>
+        <Description />
+        <File />
+      </Example>
+      <WorkflowId value="0a539abb-8c37-4be6-a694-473555158728" />
+      <Telemetry>
+        <PreviousWorkflowId value="0771088f-b471-434f-a21b-4fc217d79232" />
+        <OriginWorkflowId value="0771088f-b471-434f-a21b-4fc217d79232" />
+      </Telemetry>
+      <PlatformWorkflowId value="" />
+    </MetaInfo>
+    <Events>
+      <Enabled value="True" />
+    </Events>
+  </Properties>
+</AlteryxDocument>
